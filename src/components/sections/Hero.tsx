@@ -1,0 +1,170 @@
+"use client";
+
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
+import { useRef } from "react";
+
+import Cta from "../Cta";
+import Photo from "../Photo";
+import { useBooking } from "../BookingProvider";
+import { brand } from "@/content/clinic";
+
+/**
+ * Full bleed opener.
+ *
+ * The composition follows the reference set: a single photograph holding the
+ * viewport, the statement set in display serif with one italic word carrying
+ * the emphasis, and the functional text pinned to the corners rather than
+ * stacked in the centre. Parallax is slight on purpose. The photograph should
+ * feel like it is behind glass, not like it is sliding.
+ *
+ * ASSET SLOT: replace the still with the clinic's own footage.
+ * Set `videoSrc` to a 1920x1080 H.264 file (target under 4 MB, muted, looping)
+ * and the still below becomes its poster frame. See docs/PHOTOGRAPHY.md.
+ */
+const videoSrc: string | null = null;
+
+export default function Hero() {
+  const { open } = useBooking();
+  const ref = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const mediaY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
+  const copyY = useTransform(scrollYProgress, [0, 1], ["0%", "-38%"]);
+  const copyOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
+  // Ambient light that tracks the pointer. Motion values only, so pointer
+  // movement never re-renders anything.
+  const px = useMotionValue(0.5);
+  const py = useMotionValue(0.4);
+  const glowX = useSpring(px, { stiffness: 40, damping: 20 });
+  const glowY = useSpring(py, { stiffness: 40, damping: 20 });
+  const glowLeft = useTransform(glowX, (v) => `${v * 100}%`);
+  const glowTop = useTransform(glowY, (v) => `${v * 100}%`);
+
+  const trackPointer = (event: React.PointerEvent) => {
+    if (event.pointerType !== "mouse") return;
+    px.set(event.clientX / window.innerWidth);
+    py.set(event.clientY / window.innerHeight);
+  };
+
+  return (
+    <section
+      id="hero"
+      ref={ref}
+      onPointerMove={trackPointer}
+      className="relative min-h-[100dvh] overflow-hidden bg-graphite"
+    >
+      <motion.div style={{ y: mediaY }} className="absolute inset-0 scale-[1.16]">
+        {videoSrc ? (
+          <video className="size-full object-cover" autoPlay muted loop playsInline>
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        ) : (
+          <Photo
+            seed="hero"
+            tone="dark"
+            spec="1920 x 1080"
+            label="Кинематографичный кадр: врач на консультации в интерьере клиники, мягкий боковой свет"
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        )}
+      </motion.div>
+
+      {/* Scrim. Two layers: a vertical one so the corner meta stays readable,
+          and a left weighted one so the statement never fights the photo. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-graphite/70 via-graphite/35 to-graphite/85" />
+      <div className="absolute inset-0 bg-gradient-to-r from-graphite/65 via-transparent to-transparent" />
+
+      <motion.div
+        aria-hidden
+        style={{ left: glowLeft, top: glowTop }}
+        className="pointer-events-none absolute size-[46rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40 mix-blend-soft-light"
+      >
+        <div className="size-full rounded-full bg-[radial-gradient(circle,rgba(231,220,198,0.55),transparent_62%)]" />
+      </motion.div>
+
+      {/* Two slow drifting blooms. This is the whole of the ambient motion:
+          enough to keep the frame alive, quiet enough to read as light. */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -left-32 top-1/4 size-[34rem] rounded-full bg-[radial-gradient(circle,rgba(200,179,146,0.22),transparent_65%)] blur-2xl"
+        animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
+        transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 bottom-1/4 size-[28rem] rounded-full bg-[radial-gradient(circle,rgba(110,124,107,0.28),transparent_65%)] blur-2xl"
+        animate={{ x: [0, -50, 0], y: [0, 36, 0] }}
+        transition={{ duration: 32, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <div className="u-grain absolute inset-0" />
+
+      <motion.div
+        style={{ y: copyY, opacity: copyOpacity }}
+        className="relative mx-auto flex min-h-[100dvh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-32 lg:px-10 lg:pb-24"
+      >
+        {/* Two explicit lines. Russian compounds are long, so letting the
+            headline wrap on its own produced four lines at desktop. Emphasis is
+            the italic of the same family, never a second typeface. */}
+        <h1 className="max-w-[26ch] text-[clamp(2.05rem,5.2vw,4.9rem)] leading-[1.08] text-warm-white">
+          {[
+            [{ text: "Естественная", italic: false }, { text: "красота,", italic: false }],
+            [{ text: "доказательная", italic: true }, { text: "медицина", italic: false }],
+          ].map((line, lineIndex) => (
+            <span key={lineIndex} className="block">
+              {line.map((word, wordIndex) => (
+                <motion.span
+                  key={word.text}
+                  initial={{ opacity: 0, y: "0.32em", filter: "blur(10px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{
+                    duration: 0.9,
+                    delay: 0.14 + (lineIndex * 2 + wordIndex) * 0.09,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className={`inline-block pr-[0.24em] ${
+                    word.italic ? "pb-[0.06em] italic leading-[1.14]" : ""
+                  }`}
+                >
+                  {word.text}
+                </motion.span>
+              ))}
+            </span>
+          ))}
+        </h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="mt-7 max-w-[46ch] text-[17px] leading-relaxed text-warm-white/75 lg:text-[18px]"
+        >
+          Врачи-дерматологи с опытом от 7 лет, оригинальные препараты и сертифицированное
+          оборудование. Программа под вашу кожу.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.82 }}
+          className="mt-9 flex flex-wrap items-center gap-3"
+        >
+          <Cta variant="onDark" onClick={() => open()}>
+            Записаться на консультацию
+          </Cta>
+          <Cta variant="ghost" href="#results">
+            Посмотреть результаты
+          </Cta>
+        </motion.div>
+      </motion.div>
+
+      <span className="sr-only">{brand.descriptor}</span>
+    </section>
+  );
+}

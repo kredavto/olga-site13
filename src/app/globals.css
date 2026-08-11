@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens.
+
+   Palette is the one named in the brand brief. Neutrals run cool-warm neutral
+   (not warm-craft cream), text is charcoal rather than pure black.
+
+   Accent lock: ONE accent for the whole page, soft sage. It carries every
+   interactive and active state. Champagne is a material, not an accent: it
+   appears only as a hairline gradient on the rule under the wordmark and on
+   section dividers, never as a fill or a text color.
+
+   Radius lock: pill for interactive, 16px for cards and media, 8px for inputs.
+--------------------------------------------------------------------------- */
+
+@theme {
+  --color-warm-white: #fcfcfa;
+  --color-milk: #faf9f7;
+  --color-pearl: #f7f6f3;
+  --color-ivory: #f2f0ec;
+  --color-sand: #ede8e1;
+  --color-beige: #dccfc2;
+  --color-stone: #d8d6d1;
+  --color-warm-gray: #9a9996;
+  --color-charcoal: #2b2b2b;
+  --color-graphite: #1d1d1d;
+
+  /* Single locked accent */
+  --color-sage: #6e7c6b;
+  --color-sage-deep: #55604f;
+  --color-sage-wash: #eaeee7;
+
+  /* Champagne, used as a metallic material on hairlines only */
+  --color-champagne: #c8b392;
+  --color-champagne-light: #e7dcc6;
+
+  --font-display: var(--font-display-serif), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
+
+  --radius-card: 16px;
+  --radius-input: 8px;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-warm-white);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  @media (max-width: 767px) {
+    body {
+      font-size: 16px;
+    }
+  }
+
+  ::selection {
+    background-color: var(--color-sage);
+    color: var(--color-warm-white);
+  }
+
+  /* Focus lives on the accent so keyboard users get the same visual language
+     as hover. Never removed, only restyled. */
+  :focus-visible {
+    outline: 2px solid var(--color-sage-deep);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    /* Display serif is set optically: tight but never clipping italic
+       descenders, which is why leading never drops below 1.05. */
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  /* Small uppercase meta label. Rationed: the page uses very few of these. */
+  .u-meta {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* The champagne hairline. A material, not an accent. */
+  .u-rule-champagne {
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-champagne) 18%,
+      var(--color-champagne-light) 50%,
+      var(--color-champagne) 82%,
+      transparent
+    );
+  }
+
+  /* Glass panel. Layered edge highlight rather than a flat blur, so the
+     panel reads as a physical surface. Falls back to a solid fill when the
+     visitor asks for reduced transparency. */
+  .u-glass {
+    background-color: color-mix(in srgb, var(--color-warm-white) 62%, transparent);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border: 1px solid color-mix(in srgb, var(--color-warm-white) 70%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, white 55%, transparent),
+      0 18px 40px -24px color-mix(in srgb, var(--color-charcoal) 45%, transparent);
+  }
+
+  .u-glass-dark {
+    background-color: color-mix(in srgb, var(--color-graphite) 42%, transparent);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid color-mix(in srgb, white 16%, transparent);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, white 18%, transparent);
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .u-glass {
+      background-color: var(--color-milk);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .u-glass-dark {
+      background-color: var(--color-graphite);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+
+  /* Film grain. Taken from the reference screenshots, where the grain is what
+     keeps large flat fields from looking like flat CSS. Kept very low. */
+  .u-grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.32;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
+  }
+
+  .u-edge-fade-y {
+    mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  }
+}
+
+/* Reduced motion. Everything animated resolves to its final state instantly
+   rather than being disabled halfway. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
