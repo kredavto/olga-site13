@@ -57,21 +57,16 @@ export default function Hero() {
       onPointerMove={trackPointer}
       className="relative min-h-[100dvh] overflow-hidden bg-graphite"
     >
-      {/* The photograph starts below the header rather than under it.
-          The source has only about 8% of ceiling above the subject's hair, so
-          once the header overlapped the top of the frame there was no way to
-          uncover her hairstyle by re-cropping: those pixels do not exist. The
-          media layer is inset by the header's own height instead, which drops
-          the whole image and puts her hair well clear of the navigation. The
-          band left above is graphite, the same surface the header bar already
-          uses, and the top scrim fades the join so it reads as one dark field.
+      {/* Full bleed again. The previous photograph carried a subject whose head
+          the header cut into, which is why the media was inset below it. This
+          frame is a macro crop with nothing to protect at the top edge, so the
+          image runs under the navigation as the reference language intends.
 
-          The layer stays oversized and anchored to the top so the parallax has
-          room to travel downward without ever uncovering its own top edge. */}
+          Oversized and anchored to the top so the parallax travels downward
+          without ever uncovering its own top edge. */}
       <motion.div
         style={{ y: mediaY }}
-        /* Matches the header: a 40px practical strip over a 72px bar. */
-        className="absolute inset-x-0 bottom-0 top-[112px] origin-top scale-[1.16]"
+        className="absolute inset-0 origin-top scale-[1.16]"
       >
         {videoSrc ? (
           <video className="size-full object-cover" autoPlay muted loop playsInline>
@@ -79,31 +74,29 @@ export default function Hero() {
           </video>
         ) : (
           <Photo
-            src="/photo/hero.jpg"
+            src="/photo/hero.png"
             seed="hero"
             tone="dark"
-            spec="2752 x 1536"
-            label="Пациентка в холле клиники, врач в глубине кадра"
+            spec="1672 x 941"
+            label="Макросъёмка: глаз и текстура кожи в контровом свете"
             priority
             sizes="100vw"
-            /* The frame is composed left to right: a deep shadowed wall, then the
-               subject, then bright windows. Landscape keeps the whole run. In
-               portrait the crop is pushed right so the subject stays in frame
-               instead of being sliced by the centre default. */
-            className="object-cover object-[64%_center] md:object-center"
+            /* Portrait shows only about a quarter of this frame's width, so the
+               crop is pushed onto the eye. Centring it there would leave a black
+               rectangle and lose the whole point of the photograph. */
+            className="object-cover object-[76%_center] md:object-center"
           />
         )}
       </motion.div>
 
-      {/* Scrim, tuned to this photograph rather than applied flat.
-          The left third of the frame is already a shadowed wall, so the
-          horizontal wash only has to carry the text column and is gone by the
-          midpoint, leaving the subject and the window light untouched. The
-          vertical layers are thin: enough for the header over bright glass at
-          the top and for the CTAs at the very bottom. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-graphite/85 via-graphite/45 to-transparent md:from-graphite/80 md:via-graphite/25 md:to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-graphite/75 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-[72%] bg-gradient-to-t from-graphite/90 via-graphite/45 to-transparent md:h-64 md:from-graphite/70 md:via-transparent" />
+      {/* Scrim, tuned to this photograph. The left half of this frame is already
+          close to pure black, so a heavy horizontal wash would only flatten the
+          falloff that gives the image its depth. At desktop it is barely there,
+          just enough to settle the type. Portrait is the opposite case: the crop
+          sits on lit skin, so the bottom carries a real gradient. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-graphite/70 via-graphite/25 to-transparent md:from-graphite/45 md:via-transparent md:to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-graphite/60 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-[80%] bg-gradient-to-t from-graphite/95 via-graphite/72 to-transparent md:h-56 md:from-graphite/60 md:via-transparent" />
 
       <motion.div
         aria-hidden
@@ -135,12 +128,12 @@ export default function Hero() {
 
       <motion.div
         style={{ y: copyY, opacity: copyOpacity }}
-        className="relative mx-auto flex min-h-[100dvh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-32 lg:px-10 lg:pb-28"
+        className="relative mx-auto flex min-h-[100dvh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-32 lg:justify-center lg:px-10 lg:pb-24 lg:pt-28"
       >
         {/* The copy column stops before the subject starts. Capping it at 54%
             on wide screens is what keeps the type inside the shadowed part of
             the frame instead of running across her jacket. */}
-        <div className="lg:w-[54%]">
+        <div className="lg:w-[50%]">
         {/* Two explicit lines. Russian compounds are long, so letting the
             headline wrap on its own produced four lines at desktop. Emphasis is
             the italic of the same family, never a second typeface.
@@ -148,7 +141,7 @@ export default function Hero() {
             Set for this photograph: leading opened from 1.08 to 1.14 and a
             touch of positive tracking, because tight Didone spacing reads hard
             against a soft, warm, shallow depth of field image. */}
-        <h1 className="max-w-[26ch] text-[clamp(2rem,4.05vw,3.65rem)] leading-[1.14] tracking-[0.005em] text-gold">
+        <h1 className="max-w-[24ch] text-[clamp(2rem,3.7vw,3.35rem)] leading-[1.14] tracking-[0.005em] text-gold">
           {[
             [{ text: "Естественная", italic: false }, { text: "красота,", italic: false }],
             [{ text: "доказательная", italic: true }, { text: "медицина", italic: false }],
