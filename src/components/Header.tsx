@@ -33,20 +33,20 @@ export default function Header() {
           under which licence it operates. Folds away once the visitor scrolls. */}
       <motion.div
         aria-hidden={condensed}
-        animate={{ height: condensed ? 0 : 36, opacity: condensed ? 0 : 1 }}
+        animate={{ height: condensed ? 0 : 40, opacity: condensed ? 0 : 1 }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className="overflow-hidden bg-charcoal text-warm-white"
       >
-        <div className="mx-auto flex h-9 max-w-[1400px] items-center justify-between gap-6 px-5 lg:px-10">
-          <p className="u-meta min-w-0 truncate text-warm-white/70">
+        <div className="mx-auto flex h-10 max-w-[1400px] items-center justify-between gap-6 px-5 lg:px-10">
+          <p className="u-meta-lg min-w-0 truncate text-warm-white">
             <span className="md:hidden">{contacts.addressShort}</span>
             <span className="hidden md:inline">{contacts.address}</span>
           </p>
           <div className="hidden shrink-0 items-center gap-6 md:flex">
-            <span className="u-meta text-warm-white/70">
+            <span className="u-meta-lg text-warm-white">
               Метро {contacts.metro}, {contacts.metroWalk}
             </span>
-            <span className="u-meta text-warm-white/45">
+            <span className="u-meta-lg text-warm-white/75">
               Лицензия {legal.license}
             </span>
           </div>
@@ -70,7 +70,7 @@ export default function Header() {
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Основная навигация">
             <button
               type="button"
-              className="flex items-center gap-1.5 text-[15px] opacity-80 transition-opacity hover:opacity-100"
+              className="flex items-center gap-1.5 text-[16px] transition-opacity hover:opacity-70"
               onMouseEnter={() => setMegaOpen(true)}
               onClick={() => setMegaOpen((v) => !v)}
               aria-expanded={megaOpen}
@@ -84,7 +84,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[15px] opacity-80 transition-opacity hover:opacity-100"
+                className="text-[16px] transition-opacity hover:opacity-70"
                 onMouseEnter={() => setMegaOpen(false)}
               >
                 {item.label}
@@ -95,14 +95,14 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <a
               href={`tel:${contacts.phoneHref}`}
-              className="hidden text-[15px] font-medium tabular-nums xl:block"
+              className="hidden text-[16px] font-medium tabular-nums xl:block"
             >
               {contacts.phone}
             </a>
             <span className="hidden md:block">
               <Cta
                 variant={condensed ? "secondary" : "ghost"}
-                className="px-5 py-2.5 text-sm"
+                className="px-6 py-3 text-[15px]"
                 onClick={open}
               >
                 Записаться

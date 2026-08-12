@@ -41,6 +41,11 @@
   --color-champagne: #c8b392;
   --color-champagne-light: #e7dcc6;
 
+  /* Champagne gold, the hero headline. Richer than the hairline champagne so
+     it reads as gold rather than as beige, and held above 7:1 against the
+     scrimmed photograph so a display size headline stays comfortably legible. */
+  --color-gold: #c9a961;
+
   --font-display: var(--font-display-serif), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
 
@@ -113,6 +118,18 @@
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* Same label at the larger size the hero uses. A separate class rather than
+     a size override on .u-meta: two font-size utilities on one element resolve
+     by stylesheet order, not by the order they are written in the markup. */
+  .u-meta-lg {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     line-height: 1.4;
   }

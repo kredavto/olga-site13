@@ -6,7 +6,15 @@ import { useRef, type ReactNode } from "react";
 type Variant = "primary" | "onDark" | "secondary" | "ghost";
 
 const base =
-  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-7 py-3.5 text-[15px] font-medium transition-colors duration-300";
+  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-colors duration-300";
+
+/** Size is a prop, not a className override: padding and label size have to
+ *  move together, and two font-size utilities on one element resolve by
+ *  stylesheet order rather than by the order they appear in the markup. */
+const sizes = {
+  md: "px-7 py-3.5 text-[15px]",
+  lg: "px-8 py-4 text-[16px]",
+} as const;
 
 /**
  * Fill and label always travel together in the same variant. Never override a
@@ -30,6 +38,7 @@ type Props = {
   children: ReactNode;
   href?: string;
   variant?: Variant;
+  size?: keyof typeof sizes;
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit";
@@ -44,6 +53,7 @@ export default function Cta({
   children,
   href,
   variant = "primary",
+  size = "md",
   className = "",
   onClick,
   type = "button",
@@ -78,7 +88,7 @@ export default function Cta({
   );
 
   const shared = {
-    className: `${base} ${styles[variant]} ${className}`,
+    className: `${base} ${sizes[size]} ${styles[variant]} ${className}`,
     style: { x, y },
     onPointerMove: handleMove,
     onPointerLeave: handleLeave,

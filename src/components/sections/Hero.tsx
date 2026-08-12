@@ -70,7 +70,8 @@ export default function Hero() {
           room to travel downward without ever uncovering its own top edge. */}
       <motion.div
         style={{ y: mediaY }}
-        className="absolute inset-x-0 bottom-0 top-[100px] origin-top scale-[1.16] md:top-[108px]"
+        /* Matches the header: a 40px practical strip over a 72px bar. */
+        className="absolute inset-x-0 bottom-0 top-[112px] origin-top scale-[1.16]"
       >
         {videoSrc ? (
           <video className="size-full object-cover" autoPlay muted loop playsInline>
@@ -147,7 +148,7 @@ export default function Hero() {
             Set for this photograph: leading opened from 1.08 to 1.14 and a
             touch of positive tracking, because tight Didone spacing reads hard
             against a soft, warm, shallow depth of field image. */}
-        <h1 className="max-w-[26ch] text-[clamp(2rem,4.05vw,3.65rem)] leading-[1.14] tracking-[0.005em] text-cream">
+        <h1 className="max-w-[26ch] text-[clamp(2rem,4.05vw,3.65rem)] leading-[1.14] tracking-[0.005em] text-gold">
           {[
             [{ text: "Естественная", italic: false }, { text: "красота,", italic: false }],
             [{ text: "доказательная", italic: true }, { text: "медицина", italic: false }],
@@ -178,7 +179,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-7 max-w-[38ch] text-[16px] leading-relaxed text-cream/70 lg:text-[17px]"
+          className="mt-7 max-w-[40ch] text-[18px] leading-relaxed text-warm-white lg:text-[19px]"
         >
           Врачи-дерматологи с опытом от 7 лет, оригинальные препараты и сертифицированное
           оборудование. Программа под вашу кожу.
@@ -190,10 +191,10 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.82 }}
           className="mt-9 flex flex-wrap items-center gap-3"
         >
-          <Cta variant="onDark" onClick={() => open()}>
+          <Cta variant="onDark" size="lg" onClick={() => open()}>
             Записаться на консультацию
           </Cta>
-          <Cta variant="ghost" href="#results">
+          <Cta variant="ghost" size="lg" href="#results">
             Посмотреть результаты
           </Cta>
         </motion.div>
