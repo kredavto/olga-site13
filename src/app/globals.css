@@ -31,6 +31,12 @@
   --color-sage-deep: #55604f;
   --color-sage-wash: #eaeee7;
 
+  /* Type set over the hero photograph. The frame's light is amber and the
+     subject wears cream, so a neutral white headline reads cold against it.
+     This is the same warm neutral family as the rest of the palette, pushed
+     one step warmer, and it is used only on photography. */
+  --color-cream: #f8f3e9;
+
   /* Champagne, used as a metallic material on hairlines only */
   --color-champagne: #c8b392;
   --color-champagne-light: #e7dcc6;

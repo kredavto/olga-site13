@@ -64,21 +64,31 @@ export default function Hero() {
           </video>
         ) : (
           <Photo
+            src="/photo/hero.jpg"
             seed="hero"
             tone="dark"
-            spec="1920 x 1080"
-            label="Кинематографичный кадр: врач на консультации в интерьере клиники, мягкий боковой свет"
+            spec="2752 x 1536"
+            label="Пациентка в холле клиники, врач в глубине кадра"
             priority
             sizes="100vw"
-            className="object-cover"
+            /* The frame is composed left to right: a deep shadowed wall, then the
+               subject, then bright windows. Landscape keeps the whole run. In
+               portrait the crop is pushed right so the subject stays in frame
+               instead of being sliced by the centre default. */
+            className="object-cover object-[64%_center] md:object-center"
           />
         )}
       </motion.div>
 
-      {/* Scrim. Two layers: a vertical one so the corner meta stays readable,
-          and a left weighted one so the statement never fights the photo. */}
-      <div className="absolute inset-0 bg-gradient-to-b from-graphite/70 via-graphite/35 to-graphite/85" />
-      <div className="absolute inset-0 bg-gradient-to-r from-graphite/65 via-transparent to-transparent" />
+      {/* Scrim, tuned to this photograph rather than applied flat.
+          The left third of the frame is already a shadowed wall, so the
+          horizontal wash only has to carry the text column and is gone by the
+          midpoint, leaving the subject and the window light untouched. The
+          vertical layers are thin: enough for the header over bright glass at
+          the top and for the CTAs at the very bottom. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-graphite/85 via-graphite/45 to-transparent md:from-graphite/80 md:via-graphite/25 md:to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-graphite/75 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-[72%] bg-gradient-to-t from-graphite/90 via-graphite/45 to-transparent md:h-64 md:from-graphite/70 md:via-transparent" />
 
       <motion.div
         aria-hidden
@@ -96,9 +106,12 @@ export default function Hero() {
         animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
         transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
       />
+      {/* Warm only. The photograph's light is amber and cream, so the second
+          bloom is champagne rather than the sage used for interactive states:
+          a cool halo over this frame reads as a colour cast. */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -right-24 bottom-1/4 size-[28rem] rounded-full bg-[radial-gradient(circle,rgba(110,124,107,0.28),transparent_65%)] blur-2xl"
+        className="pointer-events-none absolute -right-24 bottom-1/4 size-[28rem] rounded-full bg-[radial-gradient(circle,rgba(231,220,198,0.16),transparent_65%)] blur-2xl"
         animate={{ x: [0, -50, 0], y: [0, 36, 0] }}
         transition={{ duration: 32, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -107,12 +120,20 @@ export default function Hero() {
 
       <motion.div
         style={{ y: copyY, opacity: copyOpacity }}
-        className="relative mx-auto flex min-h-[100dvh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-32 lg:px-10 lg:pb-24"
+        className="relative mx-auto flex min-h-[100dvh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-32 lg:px-10 lg:pb-28"
       >
+        {/* The copy column stops before the subject starts. Capping it at 54%
+            on wide screens is what keeps the type inside the shadowed part of
+            the frame instead of running across her jacket. */}
+        <div className="lg:w-[54%]">
         {/* Two explicit lines. Russian compounds are long, so letting the
             headline wrap on its own produced four lines at desktop. Emphasis is
-            the italic of the same family, never a second typeface. */}
-        <h1 className="max-w-[26ch] text-[clamp(2.05rem,5.2vw,4.9rem)] leading-[1.08] text-warm-white">
+            the italic of the same family, never a second typeface.
+
+            Set for this photograph: leading opened from 1.08 to 1.14 and a
+            touch of positive tracking, because tight Didone spacing reads hard
+            against a soft, warm, shallow depth of field image. */}
+        <h1 className="max-w-[26ch] text-[clamp(2rem,4.05vw,3.65rem)] leading-[1.14] tracking-[0.005em] text-cream">
           {[
             [{ text: "Естественная", italic: false }, { text: "красота,", italic: false }],
             [{ text: "доказательная", italic: true }, { text: "медицина", italic: false }],
@@ -143,7 +164,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-7 max-w-[46ch] text-[17px] leading-relaxed text-warm-white/75 lg:text-[18px]"
+          className="mt-7 max-w-[38ch] text-[16px] leading-relaxed text-cream/70 lg:text-[17px]"
         >
           Врачи-дерматологи с опытом от 7 лет, оригинальные препараты и сертифицированное
           оборудование. Программа под вашу кожу.
@@ -162,6 +183,7 @@ export default function Hero() {
             Посмотреть результаты
           </Cta>
         </motion.div>
+        </div>
       </motion.div>
 
       <span className="sr-only">{brand.descriptor}</span>
