@@ -133,7 +133,7 @@ export default function Hero() {
         {/* The copy column stops before the subject starts. Capping it at 54%
             on wide screens is what keeps the type inside the shadowed part of
             the frame instead of running across her jacket. */}
-        <div className="lg:w-[50%]">
+        <div className="lg:w-[58%]">
         {/* Two explicit lines. Russian compounds are long, so letting the
             headline wrap on its own produced four lines at desktop. Emphasis is
             the italic of the same family, never a second typeface.
@@ -141,7 +141,7 @@ export default function Hero() {
             Set for this photograph: leading opened from 1.08 to 1.14 and a
             touch of positive tracking, because tight Didone spacing reads hard
             against a soft, warm, shallow depth of field image. */}
-        <h1 className="max-w-[24ch] text-[clamp(2rem,3.7vw,3.35rem)] leading-[1.14] tracking-[0.005em] text-gold">
+        <h1 className="max-w-[25ch] text-[clamp(2.15rem,4.2vw,3.8rem)] leading-[1.14] tracking-[0.005em] text-gold">
           {[
             [{ text: "Естественная", italic: false }, { text: "красота,", italic: false }],
             [{ text: "доказательная", italic: true }, { text: "медицина", italic: false }],
@@ -172,7 +172,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-7 max-w-[40ch] text-[18px] leading-relaxed text-warm-white lg:text-[19px]"
+          className="mt-7 max-w-[42ch] text-[19px] leading-relaxed text-warm-white lg:text-[21px]"
         >
           Врачи-дерматологи с опытом от 7 лет, оригинальные препараты и сертифицированное
           оборудование. Программа под вашу кожу.
