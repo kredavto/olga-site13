@@ -172,7 +172,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-7 max-w-[42ch] text-[19px] leading-relaxed text-warm-white lg:text-[21px]"
+          className="mt-7 max-w-[44ch] text-[20px] leading-relaxed text-warm-white lg:text-[23px]"
         >
           Врачи-дерматологи с опытом от 7 лет, оригинальные препараты и сертифицированное
           оборудование. Программа под вашу кожу.

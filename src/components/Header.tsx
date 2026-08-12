@@ -62,15 +62,15 @@ export default function Header() {
         className={`border-b backdrop-blur-xl ${condensed ? "text-charcoal" : "text-warm-white"}`}
         onMouseLeave={() => setMegaOpen(false)}
       >
-        <div className="mx-auto flex h-[72px] max-w-[1400px] items-center justify-between gap-8 px-5 lg:px-10">
+        <div className="mx-auto flex h-[72px] max-w-[1400px] items-center justify-between gap-6 px-5 lg:px-10 xl:gap-8">
           <a href="#hero" className="shrink-0" aria-label="На главную">
             <Wordmark tone={condensed ? "dark" : "light"} />
           </a>
 
-          <nav className="hidden items-center gap-7 lg:flex" aria-label="Основная навигация">
+          <nav className="hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Основная навигация">
             <button
               type="button"
-              className="flex items-center gap-1.5 text-[16px] transition-opacity hover:opacity-70"
+              className="flex items-center gap-1.5 text-[19px] transition-opacity hover:opacity-70 xl:text-[24px]"
               onMouseEnter={() => setMegaOpen(true)}
               onClick={() => setMegaOpen((v) => !v)}
               aria-expanded={megaOpen}
@@ -84,7 +84,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[16px] transition-opacity hover:opacity-70"
+                className="text-[19px] transition-opacity hover:opacity-70 xl:text-[24px]"
                 onMouseEnter={() => setMegaOpen(false)}
               >
                 {item.label}
@@ -95,7 +95,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <a
               href={`tel:${contacts.phoneHref}`}
-              className="hidden text-[16px] font-medium tabular-nums xl:block"
+              className="hidden text-[18px] font-medium tabular-nums xl:block"
             >
               {contacts.phone}
             </a>
