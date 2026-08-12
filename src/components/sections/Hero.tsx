@@ -57,14 +57,21 @@ export default function Hero() {
       onPointerMove={trackPointer}
       className="relative min-h-[100dvh] overflow-hidden bg-graphite"
     >
-      {/* The parallax layer is oversized so there is room to travel. Scaling
-          from the centre spent half that headroom above the frame and cut the
-          top of the photograph, which is where the subject's hair is. Anchoring
-          the origin to the top keeps the first row of the image flush with the
-          top of the section and sends the whole 16% downward, into the dark
-          floor where nothing is lost. The layer only ever travels down, so the
-          top edge stays covered while the hero is on screen. */}
-      <motion.div style={{ y: mediaY }} className="absolute inset-0 origin-top scale-[1.16]">
+      {/* The photograph starts below the header rather than under it.
+          The source has only about 8% of ceiling above the subject's hair, so
+          once the header overlapped the top of the frame there was no way to
+          uncover her hairstyle by re-cropping: those pixels do not exist. The
+          media layer is inset by the header's own height instead, which drops
+          the whole image and puts her hair well clear of the navigation. The
+          band left above is graphite, the same surface the header bar already
+          uses, and the top scrim fades the join so it reads as one dark field.
+
+          The layer stays oversized and anchored to the top so the parallax has
+          room to travel downward without ever uncovering its own top edge. */}
+      <motion.div
+        style={{ y: mediaY }}
+        className="absolute inset-x-0 bottom-0 top-[100px] origin-top scale-[1.16] md:top-[108px]"
+      >
         {videoSrc ? (
           <video className="size-full object-cover" autoPlay muted loop playsInline>
             <source src={videoSrc} type="video/mp4" />
