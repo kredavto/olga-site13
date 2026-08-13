@@ -52,7 +52,7 @@ export default function Advantages() {
                 <h3 className="u-on-photo mt-5 font-sans text-[28px] font-bold leading-[1.2] tracking-tight text-gold">
                   {item.title}
                 </h3>
-                <p className="u-on-photo mt-3 text-[17px] leading-relaxed text-warm-white">{item.body}</p>
+                <p className="u-on-photo mt-3 text-[19px] leading-relaxed text-warm-white">{item.body}</p>
               </Reveal>
             ))}
           </ul>
