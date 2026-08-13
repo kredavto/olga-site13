@@ -127,7 +127,6 @@ export default function Services() {
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <SectionHead
             eyebrow="Направления"
-            titleTone="metal"
             title={
               <>
                 Что мы <span className="italic">делаем</span>

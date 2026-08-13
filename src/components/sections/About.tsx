@@ -40,7 +40,7 @@ export default function About() {
       <div className="relative mx-auto max-w-[1400px] px-5 py-28 lg:px-10 lg:py-40">
         <div className="max-w-[62ch]">
           <Reveal kind="focus">
-            <p className="font-display text-[clamp(1.75rem,3.2vw,2.8rem)] leading-[1.28] text-warm-white">
+            <p className="font-display text-[clamp(1.75rem,3.2vw,2.8rem)] leading-[1.28] text-gold">
               {brand.name} это центр медицинской косметологии и дерматологии, где естественная
               красота сочетается с научными технологиями.
             </p>

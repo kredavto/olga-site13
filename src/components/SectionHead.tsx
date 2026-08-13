@@ -7,8 +7,10 @@ type Props = {
   /** Eyebrows are rationed across the page. Only three sections carry one. */
   eyebrow?: string;
   tone?: "dark" | "light";
-  /** Metal is opt in. On a light ground it resolves to bronze rather than the
-   *  hero's gold, which measures 1.5:1 against pearl and cannot be used here. */
+  /** Section headings are metal by default and resolve by ground: the hero's
+   *  gold on dark, bronze on light. No true gold survives on near white, where
+   *  the bright value measures 1.5:1 against the 3:1 a heading needs. Pass
+   *  "ink" for a heading that should stay charcoal. */
   titleTone?: "ink" | "metal";
   align?: "left" | "wide";
 };
@@ -18,7 +20,7 @@ export default function SectionHead({
   body,
   eyebrow,
   tone = "dark",
-  titleTone = "ink",
+  titleTone = "metal",
   align = "left",
 }: Props) {
   const heading =
