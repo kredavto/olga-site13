@@ -41,6 +41,7 @@ export default function Doctors() {
             <Reveal as="article" kind="settle" key={doctor.slug} delay={index * 0.07}>
               <div className="group relative aspect-[3/4] overflow-hidden rounded-card bg-charcoal">
                 <Photo
+                  src={doctor.photo}
                   seed={doctor.photoSeed}
                   tone="dark"
                   spec="800 x 1066"

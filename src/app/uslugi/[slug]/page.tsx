@@ -191,6 +191,7 @@ export default async function ServicePage({ params }: Params) {
                 <Reveal as="article" key={doctor.slug} delay={index * 0.06}>
                   <div className="relative aspect-[3/4] overflow-hidden rounded-card bg-charcoal">
                     <Photo
+                      src={doctor.photo}
                       seed={doctor.photoSeed}
                       tone="dark"
                       spec="800 x 1066"

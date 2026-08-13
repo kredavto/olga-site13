@@ -327,6 +327,8 @@ export type Doctor = {
   focus: string;
   credentials: string[];
   photoSeed: string;
+  /** Path under /public. PLACEHOLDER portrait, see docs/CONTENT-CHECKLIST.md. */
+  photo: string;
 };
 
 /** PLACEHOLDER: sample specialists. Replace with the clinic's real team. */
@@ -344,6 +346,7 @@ export const doctors: Doctor[] = [
       "Публикации по коррекции носослёзной борозды",
     ],
     photoSeed: "lumera-doctor-av",
+    photo: "/photo/doctors/vereschagina.jpg",
   },
   {
     slug: "oganesyan",
@@ -358,6 +361,7 @@ export const doctors: Doctor[] = [
       "Спикер профильных конференций по лазерной шлифовке",
     ],
     photoSeed: "lumera-doctor-mo",
+    photo: "/photo/doctors/oganesyan.jpg",
   },
   {
     slug: "dorofeeva",
@@ -372,6 +376,7 @@ export const doctors: Doctor[] = [
       "Ведёт научную работу по андрогенной алопеции",
     ],
     photoSeed: "lumera-doctor-kd",
+    photo: "/photo/doctors/dorofeeva.jpg",
   },
   {
     slug: "yagudin",
@@ -386,6 +391,7 @@ export const doctors: Doctor[] = [
       "Наставник по аппаратным протоколам в клинике",
     ],
     photoSeed: "lumera-doctor-ry",
+    photo: "/photo/doctors/yagudin.jpg",
   },
 ];
 
