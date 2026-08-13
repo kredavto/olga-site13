@@ -80,6 +80,7 @@ export default async function ServicePage({ params }: Params) {
       <article>
         <header className="relative overflow-hidden bg-graphite pb-20 pt-40 lg:pb-28 lg:pt-48">
           <Photo
+            src={service.photo}
             seed={service.photoSeed}
             tone="dark"
             spec="1920 x 1080"

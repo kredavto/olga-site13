@@ -55,6 +55,7 @@ function ServiceCard({ service }: { service: Service }) {
       <Link href={`/uslugi/${service.slug}`} className="block">
         <div className="relative aspect-[4/5] overflow-hidden rounded-card bg-ivory">
           <Photo
+            src={service.photo}
             seed={service.photoSeed}
             tone="dark"
             spec="900 x 1120"

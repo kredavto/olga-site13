@@ -111,6 +111,8 @@ export type Service = {
   result: string;
   includes: string[];
   photoSeed: string;
+  /** Path under /public. Every procedure now has its own frame. */
+  photo: string;
 };
 
 export const services: Service[] = [
@@ -132,6 +134,7 @@ export const services: Service[] = [
       "Контрольный визит на 14 день",
     ],
     photoSeed: "lumera-botulinum",
+    photo: "/photo/services/botulinum.jpg",
   },
   {
     slug: "fillers",
@@ -151,6 +154,7 @@ export const services: Service[] = [
       "Осмотр через 14 дней",
     ],
     photoSeed: "lumera-fillers",
+    photo: "/photo/services/fillers.jpg",
   },
   {
     slug: "biorevitalization",
@@ -170,6 +174,7 @@ export const services: Service[] = [
       "План поддержки на год",
     ],
     photoSeed: "lumera-biorevi",
+    photo: "/photo/services/biorevitalization.jpg",
   },
   {
     slug: "smas-lifting",
@@ -189,6 +194,7 @@ export const services: Service[] = [
       "Контроль результата через 90 дней",
     ],
     photoSeed: "lumera-smas",
+    photo: "/photo/services/smas-lifting.jpg",
   },
   {
     slug: "laser-resurfacing",
@@ -208,6 +214,7 @@ export const services: Service[] = [
       "Осмотр на 7 день",
     ],
     photoSeed: "lumera-laser",
+    photo: "/photo/services/laser-resurfacing.jpg",
   },
   {
     slug: "rf-microneedling",
@@ -227,6 +234,7 @@ export const services: Service[] = [
       "Программа домашнего ухода",
     ],
     photoSeed: "lumera-rf",
+    photo: "/photo/services/rf-microneedling.jpg",
   },
   {
     slug: "hydrafacial",
@@ -246,6 +254,7 @@ export const services: Service[] = [
       "Рекомендации по домашнему уходу",
     ],
     photoSeed: "lumera-hydra",
+    photo: "/photo/services/hydrafacial.jpg",
   },
   {
     slug: "peeling",
@@ -265,6 +274,7 @@ export const services: Service[] = [
       "Схема защиты от солнца",
     ],
     photoSeed: "lumera-peeling",
+    photo: "/photo/services/peeling.jpg",
   },
   {
     slug: "hair-diagnostics",
@@ -284,6 +294,7 @@ export const services: Service[] = [
       "Письменный план лечения",
     ],
     photoSeed: "lumera-tricho",
+    photo: "/photo/services/hair-diagnostics.jpg",
   },
   {
     slug: "hair-prp",
@@ -303,6 +314,7 @@ export const services: Service[] = [
       "Контрольная трихоскопия через 3 месяца",
     ],
     photoSeed: "lumera-prp",
+    photo: "/photo/services/hair-prp.jpg",
   },
 ];
 
