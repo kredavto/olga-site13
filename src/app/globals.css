@@ -49,6 +49,12 @@
      further separation from the shadow the type carries. */
   --color-gold: #e6c87e;
 
+  /* The same metal read on a light ground. No true gold survives on near white:
+     the bright value measures 1.5:1 against pearl and even a mid gold only
+     reaches 2.7:1, both under the 3:1 large text threshold. This deep antique
+     bronze holds 4.9:1 and still reads as the warm metal rather than as brown. */
+  --color-bronze: #86651f;
+
   --font-display: var(--font-display-serif), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
 

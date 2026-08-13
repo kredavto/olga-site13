@@ -73,10 +73,10 @@ function ServiceCard({ service }: { service: Service }) {
           />
 
           <div className="absolute inset-x-0 bottom-0 p-6">
-            <h3 className="font-display text-[26px] leading-tight text-warm-white">
+            <h3 className="font-display text-[29px] leading-tight text-warm-white">
               {service.title}
             </h3>
-            <p className="mt-2 line-clamp-2 text-[14px] leading-relaxed text-warm-white/70">
+            <p className="mt-2 line-clamp-2 text-[16px] leading-relaxed text-warm-white/75">
               {service.summary}
             </p>
           </div>
@@ -86,7 +86,7 @@ function ServiceCard({ service }: { service: Service }) {
           </span>
         </div>
 
-        <dl className="mt-5 grid grid-cols-3 gap-3 text-[13px]">
+        <dl className="mt-5 grid grid-cols-3 gap-3 text-[15px]">
           <div>
             <dt className="text-warm-gray">Стоимость</dt>
             <dd className="mt-1 font-medium tabular-nums">от {formatPrice(service.priceFrom)} ₽</dd>
@@ -127,6 +127,7 @@ export default function Services() {
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <SectionHead
             eyebrow="Направления"
+            titleTone="metal"
             title={
               <>
                 Что мы <span className="italic">делаем</span>
@@ -145,7 +146,7 @@ export default function Services() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Найти услугу"
-                className="h-12 w-full rounded-full border border-charcoal/15 bg-warm-white pl-11 pr-4 text-[15px] outline-none transition-colors placeholder:text-warm-gray focus:border-sage"
+                className="h-12 w-full rounded-full border border-charcoal/15 bg-warm-white pl-11 pr-4 text-[17px] outline-none transition-colors placeholder:text-warm-gray focus:border-sage"
               />
             </label>
           </Reveal>
@@ -161,7 +162,7 @@ export default function Services() {
                   type="button"
                   onClick={() => setActive(tab.id)}
                   aria-pressed={isActive}
-                  className={`relative shrink-0 rounded-full px-5 py-2.5 text-[14px] transition-colors duration-300 ${
+                  className={`relative shrink-0 rounded-full px-5 py-2.5 text-[16px] transition-colors duration-300 ${
                     isActive ? "text-warm-white" : "text-charcoal/70 hover:text-charcoal"
                   }`}
                 >

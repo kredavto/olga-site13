@@ -7,11 +7,28 @@ type Props = {
   /** Eyebrows are rationed across the page. Only three sections carry one. */
   eyebrow?: string;
   tone?: "dark" | "light";
+  /** Metal is opt in. On a light ground it resolves to bronze rather than the
+   *  hero's gold, which measures 1.5:1 against pearl and cannot be used here. */
+  titleTone?: "ink" | "metal";
   align?: "left" | "wide";
 };
 
-export default function SectionHead({ title, body, eyebrow, tone = "dark", align = "left" }: Props) {
-  const heading = tone === "light" ? "text-warm-white" : "text-charcoal";
+export default function SectionHead({
+  title,
+  body,
+  eyebrow,
+  tone = "dark",
+  titleTone = "ink",
+  align = "left",
+}: Props) {
+  const heading =
+    titleTone === "metal"
+      ? tone === "light"
+        ? "text-gold"
+        : "text-bronze"
+      : tone === "light"
+        ? "text-warm-white"
+        : "text-charcoal";
   const secondary = tone === "light" ? "text-warm-white/60" : "text-warm-gray";
 
   return (

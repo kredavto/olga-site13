@@ -49,7 +49,7 @@ export default function Advantages() {
             {advantages.map((item, index) => (
               <Reveal as="li" key={item.title} delay={index * 0.06}>
                 <div className="u-rule-champagne h-px w-10" />
-                <h3 className="u-on-photo mt-5 font-sans text-[28px] font-bold leading-[1.2] tracking-tight text-gold">
+                <h3 className="u-on-photo mt-5 font-sans text-[25px] font-bold leading-[1.2] tracking-tight text-gold">
                   {item.title}
                 </h3>
                 <p className="u-on-photo mt-3 text-[19px] leading-relaxed text-warm-white">{item.body}</p>
