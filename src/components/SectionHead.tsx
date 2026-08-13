@@ -32,6 +32,15 @@ export default function SectionHead({
         ? "text-warm-white"
         : "text-charcoal";
   const secondary = tone === "light" ? "text-warm-white/60" : "text-warm-gray";
+  /* Body copy over a dark ground needs more presence than over a light one.
+     At 60% white and 17px it read as a caption under a display heading rather
+     than as the section's opening line, so on dark it runs at full white and a
+     size up. Light sections keep the quieter grey, which has plenty of contrast
+     against warm white already. */
+  const bodyTone =
+    tone === "light"
+      ? "text-warm-white text-[19px] lg:text-[20px]"
+      : "text-warm-gray text-[17px]";
 
   return (
     // Measure is set in rem, not ch. The `ch` unit resolves against this
@@ -48,7 +57,7 @@ export default function SectionHead({
       </Reveal>
       {body && (
         <Reveal delay={0.08}>
-          <p className={`mt-6 max-w-[52ch] text-[17px] leading-relaxed ${secondary}`}>{body}</p>
+          <p className={`mt-6 max-w-[52ch] leading-relaxed ${bodyTone}`}>{body}</p>
         </Reveal>
       )}
     </div>
