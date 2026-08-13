@@ -134,6 +134,16 @@
     line-height: 1.4;
   }
 
+  /* Type set directly on a photograph. A soft dark shadow gives every glyph its
+     own local contrast, so the wash over the image can stay light enough for
+     the room to read instead of being darkened until the type is safe. Sized to
+     stay invisible as a shadow and only register as separation. */
+  .u-on-photo {
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.45),
+      0 2px 14px rgba(0, 0, 0, 0.5);
+  }
+
   /* The champagne hairline. A material, not an accent. */
   .u-rule-champagne {
     background-image: linear-gradient(
