@@ -41,10 +41,13 @@
   --color-champagne: #c8b392;
   --color-champagne-light: #e7dcc6;
 
-  /* Champagne gold, the hero headline. Richer than the hairline champagne so
-     it reads as gold rather than as beige, and held above 7:1 against the
-     scrimmed photograph so a display size headline stays comfortably legible. */
-  --color-gold: #c9a961;
+  /* Champagne gold. Carries every heading set over a photograph, on the hero
+     and on the lobby section, so there is one brand gold rather than two.
+     Brighter than the hairline champagne, and brighter again than it first
+     was: over the lightened lobby wash the previous value fell to about 2.3:1
+     against the lamp globes, where this one holds a little over 3:1 and gains
+     further separation from the shadow the type carries. */
+  --color-gold: #e6c87e;
 
   --font-display: var(--font-display-serif), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
