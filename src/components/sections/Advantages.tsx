@@ -13,10 +13,10 @@ import { advantages } from "@/content/clinic";
  */
 export default function Advantages() {
   return (
-    // Both columns sit 1cm higher than the symmetric padding would place them.
+    // Both columns sit 2cm higher than the symmetric padding would place them.
     // The centimetre comes off the top and goes back on at the bottom, so the
     // type moves without the photographic band changing height.
-    <section className="u-grain relative overflow-hidden bg-graphite pb-[calc(6rem+1cm)] pt-[calc(6rem-1cm)] lg:pb-[calc(8rem+1cm)] lg:pt-[calc(8rem-1cm)]">
+    <section className="u-grain relative overflow-hidden bg-graphite pb-[calc(6rem+2cm)] pt-[calc(6rem-2cm)] lg:pb-[calc(8rem+2cm)] lg:pt-[calc(8rem-2cm)]">
       <Photo
         src="/photo/section-lobby.jpg"
         seed="lobby"
