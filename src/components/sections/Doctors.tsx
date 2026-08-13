@@ -47,7 +47,9 @@ export default function Doctors() {
                   spec="800 x 1066"
                   label={`Портрет: ${doctor.name}, ${doctor.role}`}
                   sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+                  className={`object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] ${
+                    doctor.photoPosition === "top" ? "object-top" : "object-center"
+                  }`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-graphite via-graphite/25 to-transparent" />
 

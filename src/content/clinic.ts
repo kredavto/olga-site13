@@ -329,6 +329,14 @@ export type Doctor = {
   photoSeed: string;
   /** Path under /public. PLACEHOLDER portrait, see docs/CONTENT-CHECKLIST.md. */
   photo: string;
+  /**
+   * Where the portrait's 3:4 crop is anchored. These sources are taller than
+   * the card, so a centred crop takes a slice off the top as well as the
+   * bottom, and on the frames where the subject stands high it takes the top
+   * of their hair with it. Anchoring to the top spends the whole crop on the
+   * coat below instead.
+   */
+  photoPosition?: "top" | "center";
 };
 
 /** PLACEHOLDER: sample specialists. Replace with the clinic's real team. */
@@ -347,6 +355,7 @@ export const doctors: Doctor[] = [
     ],
     photoSeed: "lumera-doctor-av",
     photo: "/photo/doctors/vereschagina.jpg",
+    photoPosition: "top",
   },
   {
     slug: "oganesyan",
@@ -392,6 +401,7 @@ export const doctors: Doctor[] = [
     ],
     photoSeed: "lumera-doctor-ry",
     photo: "/photo/doctors/yagudin.jpg",
+    photoPosition: "top",
   },
 ];
 

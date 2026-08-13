@@ -197,7 +197,9 @@ export default async function ServicePage({ params }: Params) {
                       spec="800 x 1066"
                       label={`Портрет: ${doctor.name}, ${doctor.role}`}
                       sizes="(max-width: 640px) 100vw, 25vw"
-                      className="object-cover"
+                      className={`object-cover ${
+                        doctor.photoPosition === "top" ? "object-top" : "object-center"
+                      }`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-graphite via-graphite/20 to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 p-5">
