@@ -116,8 +116,8 @@ export default function Results() {
           body="Каждый кейс описан полностью: что было, какой методикой работали, сколько процедур потребовалось и сколько заняло восстановление."
         />
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-16">
-          <Reveal kind="settle">
+        <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
+          <Reveal kind="settle" className="mx-auto w-full max-w-[520px] lg:mx-0">
             <Comparison
               before={{ photo: active.beforePhoto, seed: active.beforeSeed }}
               after={{ photo: active.afterPhoto, seed: active.afterSeed }}
