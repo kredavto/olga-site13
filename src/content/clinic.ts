@@ -499,6 +499,9 @@ export type Case = {
   recovery: string;
   beforeSeed: string;
   afterSeed: string;
+  /** Paths under /public. Split from a single before/after composite each. */
+  beforePhoto: string;
+  afterPhoto: string;
 };
 
 /** PLACEHOLDER: sample cases. Real before and after photography requires
@@ -514,6 +517,8 @@ export const cases: Case[] = [
     recovery: "Без восстановительного периода",
     beforeSeed: "lumera-case1-before",
     afterSeed: "lumera-case1-after",
+    beforePhoto: "/photo/results/case-1-before.jpg",
+    afterPhoto: "/photo/results/case-1-after.jpg",
   },
   {
     id: "case-2",
@@ -525,6 +530,8 @@ export const cases: Case[] = [
     recovery: "5 дней после каждой процедуры",
     beforeSeed: "lumera-case2-before",
     afterSeed: "lumera-case2-after",
+    beforePhoto: "/photo/results/case-2-before.jpg",
+    afterPhoto: "/photo/results/case-2-after.jpg",
   },
   {
     id: "case-3",
@@ -536,6 +543,8 @@ export const cases: Case[] = [
     recovery: "Папулы рассасываются за сутки",
     beforeSeed: "lumera-case3-before",
     afterSeed: "lumera-case3-after",
+    beforePhoto: "/photo/results/case-3-before.jpg",
+    afterPhoto: "/photo/results/case-3-after.jpg",
   },
 ];
 

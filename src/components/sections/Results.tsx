@@ -15,7 +15,15 @@ import { cases } from "@/content/clinic";
  * when the visitor controls it, and the reveal is what makes the difference
  * legible. Keyboard users get arrow key control on the slider itself.
  */
-function Comparison({ before, after, label }: { before: string; after: string; label: string }) {
+function Comparison({
+  before,
+  after,
+  label,
+}: {
+  before: { photo: string; seed: string };
+  after: { photo: string; seed: string };
+  label: string;
+}) {
   const [position, setPosition] = useState(50);
   const ref = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
@@ -30,7 +38,7 @@ function Comparison({ before, after, label }: { before: string; after: string; l
   return (
     <div
       ref={ref}
-      className="relative aspect-[4/3] w-full touch-pan-y select-none overflow-hidden rounded-card bg-ivory"
+      className="relative aspect-[4/5] w-full touch-pan-y select-none overflow-hidden rounded-card bg-ivory"
       onPointerDown={(e) => {
         dragging.current = true;
         (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
@@ -41,7 +49,8 @@ function Comparison({ before, after, label }: { before: string; after: string; l
       onPointerCancel={() => (dragging.current = false)}
     >
       <Photo
-        seed={after}
+        src={after.photo}
+        seed={after.seed}
         spec="1200 x 900"
         label={`${label}. Кадр после курса процедур, тот же ракурс и свет`}
         sizes="(max-width: 1024px) 100vw, 60vw"
@@ -50,7 +59,8 @@ function Comparison({ before, after, label }: { before: string; after: string; l
 
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
         <Photo
-          seed={before}
+          src={before.photo}
+          seed={before.seed}
           spec="1200 x 900"
           label={`${label}. Кадр до начала лечения`}
           sizes="(max-width: 1024px) 100vw, 60vw"
@@ -108,7 +118,11 @@ export default function Results() {
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-16">
           <Reveal kind="settle">
-            <Comparison before={active.beforeSeed} after={active.afterSeed} label={active.problem} />
+            <Comparison
+              before={{ photo: active.beforePhoto, seed: active.beforeSeed }}
+              after={{ photo: active.afterPhoto, seed: active.afterSeed }}
+              label={active.problem}
+            />
           </Reveal>
 
           <div>
@@ -135,7 +149,7 @@ export default function Results() {
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8"
             >
-              <h3 className="font-display text-[28px] leading-tight lg:text-[32px]">
+              <h3 className="font-display text-[28px] leading-tight text-bronze lg:text-[32px]">
                 {active.problem}
               </h3>
 

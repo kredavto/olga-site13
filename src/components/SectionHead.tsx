@@ -40,7 +40,7 @@ export default function SectionHead({
   const bodyTone =
     tone === "light"
       ? "text-warm-white text-[19px] lg:text-[20px]"
-      : "text-warm-gray text-[17px]";
+      : "text-charcoal/85 text-[19px] lg:text-[20px]";
 
   return (
     // Measure is set in rem, not ch. The `ch` unit resolves against this
