@@ -153,6 +153,18 @@
       0 2px 14px rgba(0, 0, 0, 0.5);
   }
 
+  /* The same idea with the halo closed all the way around the glyph rather than
+     dropped below it. Needed where the wash is light enough that a bright part
+     of the photograph can sit directly against a letter: the offset shadow only
+     protects the underside, this one protects every edge. */
+  .u-on-photo-strong {
+    text-shadow:
+      0 0 2px rgba(0, 0, 0, 0.62),
+      0 0 5px rgba(0, 0, 0, 0.55),
+      0 1px 2px rgba(0, 0, 0, 0.5),
+      0 2px 16px rgba(0, 0, 0, 0.5);
+  }
+
   /* The champagne hairline. A material, not an accent. */
   .u-rule-champagne {
     background-image: linear-gradient(

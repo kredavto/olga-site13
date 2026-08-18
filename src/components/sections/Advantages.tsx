@@ -30,16 +30,16 @@ export default function Advantages() {
       {/* Two layers. A flat wash sets the floor for contrast across the whole
           section, and a left weighted gradient adds the extra depth the
           statement needs without darkening the room any further on the right. */}
-      <div className="absolute inset-0 bg-graphite/52" />
-      <div className="absolute inset-0 bg-gradient-to-r from-graphite/62 via-graphite/16 to-graphite/26" />
+      <div className="absolute inset-0 bg-graphite/44" />
+      <div className="absolute inset-0 bg-gradient-to-r from-graphite/56 via-graphite/14 to-graphite/23" />
 
       <div className="relative mx-auto max-w-[1400px] px-5 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
           <Reveal>
-            <h2 className="u-on-photo text-[clamp(2rem,3.6vw,3rem)] leading-[1.12] text-gold">
+            <h2 className="u-on-photo-strong text-[clamp(2rem,3.6vw,3rem)] leading-[1.12] text-gold">
               Мы ищем причину, а не <span className="italic">маскируем</span> следствие
             </h2>
-            <p className="u-on-photo mt-6 max-w-[44ch] text-[19px] leading-relaxed text-warm-white lg:text-[20px]">
+            <p className="u-on-photo-strong mt-6 max-w-[44ch] text-[19px] leading-relaxed text-warm-white lg:text-[20px]">
               Эстетический дефект почти всегда имеет медицинское объяснение. Прежде чем предложить
               процедуру, врач разбирается, что происходит с кожей и почему.
             </p>
@@ -49,10 +49,10 @@ export default function Advantages() {
             {advantages.map((item, index) => (
               <Reveal as="li" key={item.title} delay={index * 0.06}>
                 <div className="u-rule-champagne h-px w-10" />
-                <h3 className="u-on-photo mt-5 font-sans text-[25px] font-bold leading-[1.2] tracking-tight text-gold">
+                <h3 className="u-on-photo-strong mt-5 font-sans text-[25px] font-bold leading-[1.2] tracking-tight text-gold">
                   {item.title}
                 </h3>
-                <p className="u-on-photo mt-3 text-[19px] leading-relaxed text-warm-white">{item.body}</p>
+                <p className="u-on-photo-strong mt-3 text-[19px] leading-relaxed text-warm-white">{item.body}</p>
               </Reveal>
             ))}
           </ul>
