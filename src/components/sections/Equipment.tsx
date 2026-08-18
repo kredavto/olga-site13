@@ -46,30 +46,40 @@ export default function Equipment() {
                 className={`${cellSpans[index]} group relative overflow-hidden rounded-card bg-charcoal`}
               >
                 <Photo
+                  src={device.photo}
                   seed={device.photoSeed}
                   tone="dark"
                   spec={isLead ? "1200 x 900" : "800 x 600"}
                   label={`${device.name}: аппарат в кабинете, деталь панели крупным планом`}
                   sizes={isLead ? "(max-width: 1024px) 100vw, 58vw" : "(max-width: 1024px) 100vw, 33vw"}
-                  className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+                  className={`object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] ${
+                    device.photoPosition === "top" ? "object-top" : "object-center"
+                  }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-graphite/90 via-graphite/30 to-transparent" />
+
+                {/* The platforms are white and grey machines under clinical
+                    light, so these cards are the brightest photography on the
+                    page. The scrim reaches further up the frame than a bottom
+                    edge gradient would, and the type carries a halo on top: a
+                    gradient strong enough on its own to hold a caption over a
+                    lit panel would have blacked out the machine. */}
+                <div className="absolute inset-0 bg-gradient-to-t from-graphite/94 via-graphite/62 to-graphite/12" />
 
                 <div className="relative flex h-full flex-col justify-end p-6">
                   <h3
-                    className={`font-display leading-tight text-warm-white ${
+                    className={`u-on-photo-strong font-display leading-tight text-warm-white ${
                       isLead ? "text-[34px] lg:text-[44px]" : "text-[24px]"
                     }`}
                   >
                     {device.name}
                   </h3>
-                  <p className="mt-2 text-[14px] text-warm-white/65">
+                  <p className="u-on-photo-strong mt-2 text-[14px] text-warm-white/80">
                     {device.maker}, {device.country}
                   </p>
-                  <p className={`mt-4 max-w-[42ch] text-[14px] leading-relaxed text-warm-white/75`}>
+                  <p className="u-on-photo-strong mt-4 max-w-[42ch] text-[14px] leading-relaxed text-warm-white">
                     {device.purpose}
                   </p>
-                  <p className="mt-2 max-w-[42ch] text-[13px] leading-relaxed text-warm-white/50">
+                  <p className="u-on-photo-strong mt-2 max-w-[42ch] text-[13px] leading-relaxed text-warm-white/75">
                     {device.advantage}
                   </p>
                 </div>

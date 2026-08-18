@@ -412,6 +412,10 @@ export type Device = {
   purpose: string;
   advantage: string;
   photoSeed: string;
+  /** Path under /public. Every platform has its own frame. */
+  photo: string;
+  /** Where the crop anchors. Portrait sources of tall consoles need "top". */
+  photoPosition?: "top" | "center";
 };
 
 export const devices: Device[] = [
@@ -422,6 +426,7 @@ export const devices: Device[] = [
     purpose: "Сфокусированный ультразвук для SMAS-лифтинга",
     advantage: "Работа на четырёх глубинах за один сеанс, меньше болевых ощущений",
     photoSeed: "lumera-device-ultraformer",
+    photo: "/photo/devices/ultraformer.jpg",
   },
   {
     name: "Fotona SP Dynamis",
@@ -430,6 +435,7 @@ export const devices: Device[] = [
     purpose: "Эрбиевый и неодимовый лазер",
     advantage: "Две длины волны, от мягкого обновления до фракционной шлифовки",
     photoSeed: "lumera-device-fotona",
+    photo: "/photo/devices/fotona.jpg",
   },
   {
     name: "Morpheus8",
@@ -438,6 +444,7 @@ export const devices: Device[] = [
     purpose: "Радиочастотный микроигольчатый лифтинг",
     advantage: "Контроль глубины до 8 мм, работа с нижней третью лица",
     photoSeed: "lumera-device-morpheus",
+    photo: "/photo/devices/morpheus.jpg",
   },
   {
     name: "HydraFacial Syndeo",
@@ -446,14 +453,22 @@ export const devices: Device[] = [
     purpose: "Аппаратная чистка и насыщение кожи",
     advantage: "Вакуумная экстракция без механического травмирования",
     photoSeed: "lumera-device-hydra",
+    photo: "/photo/devices/hydrafacial.jpg",
   },
   {
-    name: "GentleMax Pro",
+    // The supplied photograph is a GentleLase Pro, so the record follows the
+    // photograph rather than the other way round: that model is the 755nm
+    // alexandrite on its own, where the GentleMax Pro named here before is the
+    // dual alexandrite and Nd:YAG. A photograph of a GentleMax Pro restores
+    // the original entry.
+    name: "GentleLase Pro",
     maker: "Candela",
     country: "США",
-    purpose: "Александритовый и неодимовый лазер",
+    purpose: "Александритовый лазер 755 нм",
     advantage: "Криогенное охлаждение кожи в момент импульса",
     photoSeed: "lumera-device-candela",
+    photo: "/photo/devices/candela.jpg",
+    photoPosition: "top",
   },
   {
     name: "M22",
@@ -462,6 +477,7 @@ export const devices: Device[] = [
     purpose: "Фотоомоложение и работа с сосудами",
     advantage: "Сменные фильтры под конкретную задачу и фототип",
     photoSeed: "lumera-device-lumenis",
+    photo: "/photo/devices/lumenis.jpg",
   },
 ];
 
