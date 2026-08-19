@@ -161,8 +161,12 @@ export default function Services() {
                   type="button"
                   onClick={() => setActive(tab.id)}
                   aria-pressed={isActive}
-                  className={`relative shrink-0 rounded-full px-5 py-2.5 text-[16px] transition-colors duration-300 ${
-                    isActive ? "text-warm-white" : "text-charcoal/70 hover:text-charcoal"
+                  // Inactive tabs read at full charcoal rather than at 70%.
+                  // These are the section's navigation, and a faded control
+                  // that has to be recognised as clickable is the wrong thing
+                  // to hold back.
+                  className={`relative shrink-0 rounded-full px-6 py-3 text-[19px] font-medium transition-colors duration-300 ${
+                    isActive ? "text-warm-white" : "text-charcoal hover:text-bronze"
                   }`}
                 >
                   {isActive && (
