@@ -38,7 +38,11 @@ function Comparison({
   return (
     <div
       ref={ref}
-      className="relative aspect-[4/5] w-full touch-pan-y select-none overflow-hidden rounded-card bg-ivory"
+      // Height is what has to fit, so height is what is set: the 4:5 ratio
+      // then derives the width. Sizing by width instead would have needed a
+      // wider crop, and the pairs are portrait, so a wider frame cuts through
+      // the faces the comparison exists to show.
+      className="relative aspect-[4/5] h-[min(52vh,560px)] w-auto touch-pan-y select-none overflow-hidden rounded-card bg-ivory"
       onPointerDown={(e) => {
         dragging.current = true;
         (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
@@ -104,8 +108,16 @@ export default function Results() {
   const active = cases[index];
 
   return (
-    <section id="results" className="bg-warm-white py-24 lg:py-32">
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+    // One screen tall, content sitting at the top of it rather than centred.
+    // The 1cm lift comes straight off the top padding, and that padding is
+    // floored above the header's 73px: centring instead put the heading behind
+    // the header bar on a 768 tall window, where the free space is too small to
+    // absorb the lift.
+    <section
+      id="results"
+      className="min-h-[100dvh] bg-warm-white pb-[clamp(2rem,5vh,5rem)] pt-[calc(clamp(8rem,12vh,10rem)-1cm)]"
+    >
+      <div className="mx-auto w-full max-w-[1400px] px-5 lg:px-10">
         <SectionHead
           align="wide"
           title={
@@ -113,11 +125,17 @@ export default function Results() {
               Результаты, которые можно <span className="italic">проверить</span>
             </>
           }
+          titleClass="text-[min(clamp(2.1rem,4.4vw,3.7rem),4.5vh)]"
+          bodyGapClass="mt-[clamp(0.75rem,2vh,1.5rem)]"
+          // The colour carries "!" because the shared default sets charcoal at
+          // 85% and two colour utilities on one element resolve by stylesheet
+          // order, not by the order they are written here.
+          bodyClass="text-[clamp(20px,2.4vh,24px)] text-charcoal! lg:text-[clamp(20px,2.4vh,24px)]"
           body="Каждый кейс описан полностью: что было, какой методикой работали, сколько процедур потребовалось и сколько заняло восстановление."
         />
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
-          <Reveal kind="settle" className="mx-auto w-full max-w-[520px] lg:mx-0">
+        <div className="mt-[clamp(1.25rem,3vh,3rem)] grid gap-8 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-14">
+          <Reveal kind="settle" className="mx-auto w-fit lg:mx-0">
             <Comparison
               before={{ photo: active.beforePhoto, seed: active.beforeSeed }}
               after={{ photo: active.afterPhoto, seed: active.afterSeed }}
@@ -147,13 +165,13 @@ export default function Results() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-8"
+              className="mt-[clamp(1rem,2.4vh,2rem)] max-w-[54rem]"
             >
-              <h3 className="font-display text-[28px] leading-tight text-bronze lg:text-[32px]">
+              <h3 className="font-display text-[clamp(28px,3.8vh,36px)] leading-tight text-bronze-bright">
                 {active.problem}
               </h3>
 
-              <dl className="mt-8 space-y-6">
+              <dl className="mt-[clamp(1rem,2.4vh,2rem)] space-y-[clamp(0.6rem,1.5vh,1.1rem)]">
                 {[
                   ["Методика", active.method],
                   ["Препараты", active.drugs],
@@ -162,13 +180,13 @@ export default function Results() {
                   ["Восстановление", active.recovery],
                 ].map(([term, value]) => (
                   <div key={term} className="grid gap-1.5 sm:grid-cols-[150px_minmax(0,1fr)] sm:gap-6">
-                    <dt className="u-meta pt-1 text-warm-gray">{term}</dt>
-                    <dd className="leading-relaxed">{value}</dd>
+                    <dt className="u-meta-lg pt-1 text-charcoal/75">{term}</dt>
+                    <dd className="text-[clamp(18px,2.2vh,22px)] leading-relaxed text-charcoal">{value}</dd>
                   </div>
                 ))}
               </dl>
 
-              <p className="mt-10 border-t border-charcoal/10 pt-5 text-[13px] leading-relaxed text-warm-gray">
+              <p className="mt-[clamp(0.75rem,1.7vh,1.75rem)] border-t border-charcoal/10 pt-[clamp(0.75rem,1.6vh,1.25rem)] text-[clamp(14px,1.6vh,15px)] leading-relaxed text-charcoal/70">
                 Результат индивидуален и зависит от исходного состояния, возраста и соблюдения
                 рекомендаций врача. Фотографии публикуются с письменного согласия пациента.
               </p>

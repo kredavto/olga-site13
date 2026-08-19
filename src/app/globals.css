@@ -55,6 +55,12 @@
      bronze holds 4.9:1 and still reads as the warm metal rather than as brown. */
   --color-bronze: #86651f;
 
+  /* The same bronze opened up, for a heading that has to carry more presence
+     than the section title above it. Measures 3.5:1 on warm white, which is
+     above the 3:1 large text threshold and as bright as this metal gets before
+     it drops under it. */
+  --color-bronze-bright: #a8801f;
+
   --font-display: var(--font-display-serif), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
 

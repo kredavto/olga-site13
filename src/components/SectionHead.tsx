@@ -13,6 +13,15 @@ type Props = {
    *  "ink" for a heading that should stay charcoal. */
   titleTone?: "ink" | "metal";
   align?: "left" | "wide";
+  /** Extra classes for the body line, for a section that needs it set louder
+   *  than the shared default. Appended last, and it has to carry its own `lg:`
+   *  variant to beat the default's: two font sizes on one element resolve by
+   *  stylesheet order, not by the order they are written. */
+  bodyClass?: string;
+  /** Extra classes for the heading, same contract as bodyClass. */
+  titleClass?: string;
+  /** Extra classes for the gap above the body line. */
+  bodyGapClass?: string;
 };
 
 export default function SectionHead({
@@ -22,6 +31,9 @@ export default function SectionHead({
   tone = "dark",
   titleTone = "metal",
   align = "left",
+  bodyClass = "",
+  titleClass = "",
+  bodyGapClass = "mt-6",
 }: Props) {
   const heading =
     titleTone === "metal"
@@ -53,11 +65,11 @@ export default function SectionHead({
         </Reveal>
       )}
       <Reveal>
-        <h2 className={`text-[clamp(2.1rem,4.4vw,3.7rem)] leading-[1.08] ${heading}`}>{title}</h2>
+        <h2 className={`text-[clamp(2.1rem,4.4vw,3.7rem)] leading-[1.08] ${heading} ${titleClass}`}>{title}</h2>
       </Reveal>
       {body && (
         <Reveal delay={0.08}>
-          <p className={`mt-6 max-w-[52ch] leading-relaxed ${bodyTone}`}>{body}</p>
+          <p className={`${bodyGapClass} max-w-[52ch] leading-relaxed ${bodyTone} ${bodyClass}`}>{body}</p>
         </Reveal>
       )}
     </div>
