@@ -13,6 +13,8 @@ import { advantages } from "@/content/clinic";
  * The ground is black silk, so this is the one section on the page where gold
  * has real room: the fabric never rises above mid grey, and the type sits at
  * better than 10:1 without needing the heavy wash the lobby photograph did.
+ * Headings take the gold, body copy under them is white, which keeps the
+ * hierarchy on colour rather than only on size and weight.
  *
  * Everything here is set in cards. Each carries a pointer driven tilt, a gold
  * light wave that sweeps across on hover, and a mark in the corner with its own
@@ -171,7 +173,7 @@ function AdvantageCard({
           <h3 className="mt-[clamp(0.6rem,1.5vh,1.25rem)] font-sans text-[clamp(19px,2.45vh,25px)] font-bold leading-[1.2] tracking-tight text-gold">
             {title}
           </h3>
-          <p className="mt-[clamp(0.4rem,0.9vh,0.75rem)] text-[clamp(16px,1.85vh,19px)] leading-[1.5] text-gold/80">{body}</p>
+          <p className="mt-[clamp(0.4rem,0.9vh,0.75rem)] text-[clamp(16px,1.85vh,19px)] leading-[1.5] text-warm-white">{body}</p>
         </div>
       </motion.div>
     </Reveal>
@@ -211,7 +213,7 @@ export default function Advantages() {
               <h2 className="mt-[clamp(0.75rem,2vh,1.5rem)] text-[min(clamp(2rem,3.6vw,3rem),5.2vh)] leading-[1.12] text-gold">
                 Мы ищем причину, а не <span className="italic">маскируем</span> следствие
               </h2>
-              <p className="mt-[clamp(0.75rem,2vh,1.5rem)] max-w-[34ch] text-[clamp(24px,3vh,30px)] leading-[1.4] text-gold/80">
+              <p className="mt-[clamp(0.75rem,2vh,1.5rem)] max-w-[34ch] text-[clamp(24px,3vh,30px)] leading-[1.4] text-warm-white">
                 Эстетический дефект почти всегда имеет медицинское объяснение. Прежде чем предложить
                 процедуру, врач разбирается, что происходит с кожей и почему.
               </p>
