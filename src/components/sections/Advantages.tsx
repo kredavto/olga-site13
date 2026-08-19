@@ -211,7 +211,7 @@ export default function Advantages() {
               <h2 className="mt-[clamp(0.75rem,2vh,1.5rem)] text-[min(clamp(2rem,3.6vw,3rem),5.2vh)] leading-[1.12] text-gold">
                 Мы ищем причину, а не <span className="italic">маскируем</span> следствие
               </h2>
-              <p className="mt-[clamp(0.75rem,2vh,1.5rem)] max-w-[44ch] text-[clamp(16px,2vh,20px)] leading-[1.55] text-gold/80">
+              <p className="mt-[clamp(0.75rem,2vh,1.5rem)] max-w-[30ch] text-[clamp(32px,4vh,40px)] leading-[1.35] text-gold/80">
                 Эстетический дефект почти всегда имеет медицинское объяснение. Прежде чем предложить
                 процедуру, врач разбирается, что происходит с кожей и почему.
               </p>
