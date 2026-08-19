@@ -150,7 +150,7 @@ function AdvantageCard({
         onPointerMove={onMove}
         onPointerLeave={reset}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="group relative h-full overflow-hidden rounded-card border border-gold/15 bg-white/[0.045] p-7 backdrop-blur-[6px] transition-colors duration-500 hover:border-gold/40"
+        className="group relative h-full overflow-hidden rounded-card border border-gold/15 bg-white/[0.045] p-[clamp(1.05rem,2.3vh,1.75rem)] backdrop-blur-[6px] transition-colors duration-500 hover:border-gold/40"
       >
         {/* Pointer glow. */}
         <motion.span
@@ -168,10 +168,10 @@ function AdvantageCard({
         {/* Content rides forward on Z so the tilt separates it from the face. */}
         <div style={{ transform: "translateZ(38px)" }} className="relative">
           <CardMark index={index} still={still} />
-          <h3 className="mt-5 font-sans text-[25px] font-bold leading-[1.2] tracking-tight text-gold">
+          <h3 className="mt-[clamp(0.6rem,1.5vh,1.25rem)] font-sans text-[clamp(19px,2.45vh,25px)] font-bold leading-[1.2] tracking-tight text-gold">
             {title}
           </h3>
-          <p className="mt-3 text-[19px] leading-relaxed text-gold/80">{body}</p>
+          <p className="mt-[clamp(0.4rem,0.9vh,0.75rem)] text-[clamp(16px,1.85vh,19px)] leading-[1.5] text-gold/80">{body}</p>
         </div>
       </motion.div>
     </Reveal>
@@ -180,10 +180,14 @@ function AdvantageCard({
 
 export default function Advantages() {
   return (
-    // Both columns sit 2cm higher than the symmetric padding would place them.
-    // The centimetre comes off the top and goes back on at the bottom, so the
-    // type moves without the photographic band changing height.
-    <section className="u-grain relative overflow-hidden bg-graphite pb-[calc(6rem+2cm)] pt-[calc(6rem-2cm)] lg:pb-[calc(8rem+2cm)] lg:pt-[calc(8rem-2cm)]">
+    // The section is one screen tall and its content is centred in it, so the
+    // whole set of cards is visible without scrolling. Everything inside is
+    // sized against viewport height rather than in fixed pixels: a fixed size
+    // only ever fits one laptop, and this has to hold from a 768 tall window up.
+    // Below lg the cards stack into a single column and the section grows past
+    // the screen, which is the honest outcome: seven cards cannot be read on a
+    // phone at any type size worth setting.
+    <section className="u-grain relative flex min-h-[100dvh] items-center overflow-hidden bg-graphite py-[clamp(4.5rem,7vh,7rem)]">
       <Photo
         src="/photo/section-silk.jpg"
         seed="silk"
@@ -199,22 +203,22 @@ export default function Advantages() {
           flatten the fabric into a black field. */}
       <div className="absolute inset-0 bg-graphite/30" />
 
-      <div className="relative mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8">
+      <div className="relative mx-auto w-full max-w-[1400px] px-5 lg:px-10">
+        <div className="grid gap-[clamp(0.75rem,1.7vh,1.5rem)] lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-[clamp(1rem,2vh,2rem)]">
           <Reveal className="[perspective:1200px]">
-            <div className="h-full rounded-card border border-gold/20 bg-white/[0.05] p-8 backdrop-blur-[6px] lg:p-10">
+            <div className="h-full rounded-card border border-gold/20 bg-white/[0.05] p-[clamp(1.25rem,3vh,2.5rem)] backdrop-blur-[6px]">
               <span aria-hidden className="u-rule-champagne block h-px w-14" />
-              <h2 className="mt-6 text-[clamp(2rem,3.6vw,3rem)] leading-[1.12] text-gold">
+              <h2 className="mt-[clamp(0.75rem,2vh,1.5rem)] text-[min(clamp(2rem,3.6vw,3rem),5.2vh)] leading-[1.12] text-gold">
                 Мы ищем причину, а не <span className="italic">маскируем</span> следствие
               </h2>
-              <p className="mt-6 max-w-[44ch] text-[19px] leading-relaxed text-gold/80 lg:text-[20px]">
+              <p className="mt-[clamp(0.75rem,2vh,1.5rem)] max-w-[44ch] text-[clamp(16px,2vh,20px)] leading-[1.55] text-gold/80">
                 Эстетический дефект почти всегда имеет медицинское объяснение. Прежде чем предложить
                 процедуру, врач разбирается, что происходит с кожей и почему.
               </p>
             </div>
           </Reveal>
 
-          <ul className="grid gap-6 sm:grid-cols-2">
+          <ul className="grid gap-[clamp(0.75rem,1.7vh,1.5rem)] sm:grid-cols-2">
             {advantages.map((item, index) => (
               <AdvantageCard key={item.title} index={index} title={item.title} body={item.body} />
             ))}
