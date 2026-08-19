@@ -42,7 +42,7 @@ function Comparison({
       // then derives the width. Sizing by width instead would have needed a
       // wider crop, and the pairs are portrait, so a wider frame cuts through
       // the faces the comparison exists to show.
-      className="relative aspect-[4/5] h-[min(52vh,560px)] w-auto touch-pan-y select-none overflow-hidden rounded-card bg-ivory"
+      className="relative aspect-[4/5] h-[min(59vh,620px)] w-auto touch-pan-y select-none overflow-hidden rounded-card bg-ivory"
       onPointerDown={(e) => {
         dragging.current = true;
         (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
@@ -120,12 +120,15 @@ export default function Results() {
       <div className="mx-auto w-full max-w-[1400px] px-5 lg:px-10">
         <SectionHead
           align="wide"
+          // Wider measure than the shared one: at the enlarged size the heading
+          // wrapped to two lines inside 52rem, which cost the one screen fit.
+          wrapperClass="lg:max-w-[64rem]"
           title={
             <>
               Результаты, которые можно <span className="italic">проверить</span>
             </>
           }
-          titleClass="text-[min(clamp(2.1rem,4.4vw,3.7rem),4.5vh)]"
+          titleClass="text-bronze-bright! text-[min(clamp(2.4rem,5vw,4.2rem),5.4vh)]"
           bodyGapClass="mt-[clamp(0.75rem,2vh,1.5rem)]"
           // The colour carries "!" because the shared default sets charcoal at
           // 85% and two colour utilities on one element resolve by stylesheet
@@ -144,7 +147,7 @@ export default function Results() {
           </Reveal>
 
           <div>
-            <div className="flex gap-2">
+            <div className="ml-auto flex max-w-[48rem] gap-2">
               {cases.map((item, i) => (
                 <button
                   key={item.id}
@@ -165,13 +168,13 @@ export default function Results() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-[clamp(1rem,2.4vh,2rem)] max-w-[54rem]"
+              className="ml-auto mt-[clamp(1rem,2.4vh,2rem)] max-w-[48rem]"
             >
               <h3 className="font-display text-[clamp(28px,3.8vh,36px)] leading-tight text-bronze-bright">
                 {active.problem}
               </h3>
 
-              <dl className="mt-[clamp(1rem,2.4vh,2rem)] space-y-[clamp(0.6rem,1.5vh,1.1rem)]">
+              <dl className="mt-[clamp(0.85rem,2vh,1.75rem)] space-y-[clamp(0.55rem,1.3vh,1rem)]">
                 {[
                   ["Методика", active.method],
                   ["Препараты", active.drugs],
@@ -186,7 +189,7 @@ export default function Results() {
                 ))}
               </dl>
 
-              <p className="mt-[clamp(0.75rem,1.7vh,1.75rem)] border-t border-charcoal/10 pt-[clamp(0.75rem,1.6vh,1.25rem)] text-[clamp(14px,1.6vh,15px)] leading-relaxed text-charcoal/70">
+              <p className="mt-[clamp(0.65rem,1.4vh,1.5rem)] border-t border-charcoal/10 pt-[clamp(0.75rem,1.6vh,1.25rem)] text-[clamp(14px,1.6vh,15px)] leading-relaxed text-charcoal/70">
                 Результат индивидуален и зависит от исходного состояния, возраста и соблюдения
                 рекомендаций врача. Фотографии публикуются с письменного согласия пациента.
               </p>

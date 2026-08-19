@@ -22,6 +22,8 @@ type Props = {
   titleClass?: string;
   /** Extra classes for the gap above the body line. */
   bodyGapClass?: string;
+  /** Extra classes for the block itself, normally its measure. */
+  wrapperClass?: string;
 };
 
 export default function SectionHead({
@@ -34,6 +36,7 @@ export default function SectionHead({
   bodyClass = "",
   titleClass = "",
   bodyGapClass = "mt-6",
+  wrapperClass = "",
 }: Props) {
   const heading =
     titleTone === "metal"
@@ -58,7 +61,7 @@ export default function SectionHead({
     // Measure is set in rem, not ch. The `ch` unit resolves against this
     // wrapper's font (Manrope at 17px), not against the display serif inside
     // it, so a ch based cap squeezed every heading into four lines.
-    <div className={`w-full ${align === "wide" ? "max-w-[52rem]" : "max-w-[38rem]"}`}>
+    <div className={`w-full ${align === "wide" ? "max-w-[52rem]" : "max-w-[38rem]"} ${wrapperClass}`}>
       {eyebrow && (
         <Reveal>
           <p className={`u-meta mb-5 ${secondary}`}>{eyebrow}</p>
