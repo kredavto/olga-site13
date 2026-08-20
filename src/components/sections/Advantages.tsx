@@ -27,7 +27,7 @@ export default function Advantages() {
     // window up, and a fixed size only ever fits one laptop. Below lg the
     // section grows past the screen, which is the honest outcome for seven
     // blocks of text on a phone.
-    <section className="u-grain relative flex min-h-[100dvh] items-center overflow-hidden bg-warm-white py-[clamp(3.25rem,5.5vh,6rem)]">
+    <section className="u-grain relative flex min-h-[100dvh] items-center overflow-hidden bg-warm-white py-[clamp(2.25rem,4.5vh,5.5rem)]">
       {/* The frame is contained rather than cropped, so the whole still life is
           on the page: the shell, the phone and the shadow across the travertine
           all read. Contained means the portrait source no longer fills a
@@ -53,26 +53,26 @@ export default function Advantages() {
           contained frame does not end in a hard vertical seam. */}
       <div className="absolute inset-y-0 right-0 hidden w-[52%] bg-gradient-to-r from-warm-white via-warm-white/25 to-transparent lg:block" />
 
-      <div className="relative mx-auto w-full max-w-[1280px] px-5 lg:px-10">
-        <div className="max-w-[46rem] lg:max-w-[32rem] xl:max-w-[38rem]">
+      <div className="relative mx-auto w-full max-w-[1280px] px-5 lg:px-10 lg:pr-[calc((100vw+min(100vw,1280px))/2-54vw+3rem)]">
+        <div className="max-w-[46rem] lg:max-w-none">
           <Reveal>
             <span aria-hidden className="u-rule-champagne block h-px w-14" />
-            <h2 className="mt-[clamp(0.75rem,2vh,1.5rem)] text-[min(clamp(1.85rem,3.4vw,2.9rem),4.4vh)] leading-[1.12] text-terracotta">
+            <h2 className="mt-[clamp(0.5rem,1.5vh,1.25rem)] text-[min(clamp(2.1rem,3.8vw,3.3rem),5vh)] leading-[1.12] text-terracotta">
               Мы ищем причину, а не <span className="italic">маскируем</span> следствие
             </h2>
-            <p className="mt-[clamp(0.5rem,1.3vh,1.1rem)] max-w-[54ch] text-[clamp(16px,1.95vh,20px)] leading-[1.5] text-charcoal">
+            <p className="mt-[clamp(0.5rem,1.3vh,1.1rem)] lg:max-w-none max-w-[54ch] text-[clamp(18px,2.2vh,23px)] leading-[1.5] text-charcoal">
               Эстетический дефект почти всегда имеет медицинское объяснение. Прежде чем предложить
               процедуру, врач разбирается, что происходит с кожей и почему.
             </p>
           </Reveal>
 
-          <dl className="mt-[clamp(1rem,2.4vh,2rem)] space-y-[clamp(0.5rem,1.35vh,1.15rem)]">
+          <dl className="mt-[clamp(0.85rem,1.9vh,1.75rem)] space-y-[clamp(0.45rem,1.05vh,1rem)]">
             {advantages.map((item, index) => (
               <Reveal key={item.title} delay={0.06 + index * 0.05}>
-                <dt className="font-display text-[clamp(17px,2.1vh,23px)] leading-[1.2] text-terracotta-deep">
+                <dt className="font-display text-[clamp(19px,2.4vh,26px)] leading-[1.2] text-terracotta-deep">
                   {item.title}
                 </dt>
-                <dd className="mt-[clamp(0.1rem,0.4vh,0.35rem)] max-w-[60ch] text-[clamp(14px,1.6vh,17px)] leading-[1.5] text-charcoal">
+                <dd className="mt-[clamp(0.1rem,0.4vh,0.35rem)] lg:max-w-none max-w-[60ch] text-[clamp(16px,1.85vh,20px)] leading-[1.5] text-charcoal">
                   {item.body}
                 </dd>
               </Reveal>
