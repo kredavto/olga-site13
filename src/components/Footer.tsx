@@ -4,7 +4,7 @@ import { brand, categories, contacts, legal, servicesByCategory } from "@/conten
 export default function Footer() {
   return (
     <footer className="u-grain relative overflow-hidden bg-graphite pb-10 pt-20 text-warm-white/70">
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+      <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
         <div className="grid gap-12 border-b border-white/10 pb-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
           <div>
             <Wordmark tone="light" />
@@ -41,7 +41,7 @@ export default function Footer() {
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {categories.slice(0, 2).map((category) => (
               <nav key={category.id} aria-label={category.label}>
-                <h2 className="u-meta text-warm-white/45">{category.label}</h2>
+                <h2 className="u-meta text-warm-white/65">{category.label}</h2>
                 <ul className="mt-4 space-y-2.5">
                   {servicesByCategory(category.id).map((service) => (
                     <li key={service.slug}>
@@ -55,7 +55,7 @@ export default function Footer() {
             ))}
 
             <nav aria-label="Документы">
-              <h2 className="u-meta text-warm-white/45">Документы</h2>
+              <h2 className="u-meta text-warm-white/65">Документы</h2>
               <ul className="mt-4 space-y-2.5">
                 {legal.documents.map((doc) => (
                   <li key={doc.href}>
@@ -66,7 +66,7 @@ export default function Footer() {
                 ))}
               </ul>
 
-              <h2 className="u-meta mt-8 text-warm-white/45">Контролирующие органы</h2>
+              <h2 className="u-meta mt-8 text-warm-white/65">Контролирующие органы</h2>
               <ul className="mt-4 space-y-2.5">
                 {legal.supervisors.map((item) => (
                   <li key={item.href}>
@@ -91,7 +91,7 @@ export default function Footer() {
           {legal.warning}
         </p>
 
-        <div className="mt-10 flex flex-col gap-4 text-[13px] leading-relaxed text-warm-white/45 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mt-10 flex flex-col gap-4 text-[13px] leading-relaxed text-warm-white/65 lg:flex-row lg:items-end lg:justify-between">
           <p className="max-w-[70ch]">
             {legal.entity}. ИНН {legal.inn}, ОГРН {legal.ogrn}. Лицензия на осуществление медицинской
             деятельности {legal.license} от {legal.licenseDate}, выдана{" "}

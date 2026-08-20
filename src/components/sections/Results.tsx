@@ -42,7 +42,12 @@ function Comparison({
       // then derives the width. Sizing by width instead would have needed a
       // wider crop, and the pairs are portrait, so a wider frame cuts through
       // the faces the comparison exists to show.
-      className="relative aspect-[4/5] h-[min(59vh,620px)] w-auto touch-pan-y select-none overflow-hidden rounded-card bg-ivory"
+      //
+      // The third term in the min is the phone. A tall narrow window makes 59vh
+      // taller than the column is wide, and the derived width then pushed the
+      // document 32px sideways. Bounding the height by the available width too
+      // keeps the ratio intact instead of clamping the box out of shape.
+      className="relative aspect-[4/5] h-[min(59vh,620px,calc((100vw-2.5rem)*1.25))] w-auto touch-pan-y select-none overflow-hidden rounded-card bg-ivory"
       onPointerDown={(e) => {
         dragging.current = true;
         (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
@@ -117,7 +122,7 @@ export default function Results() {
       id="results"
       className="min-h-[100dvh] bg-warm-white pb-[clamp(2rem,5vh,5rem)] pt-[calc(clamp(8rem,12vh,10rem)-1cm)]"
     >
-      <div className="mx-auto w-full max-w-[1400px] px-5 lg:px-10">
+      <div className="mx-auto w-full max-w-[1280px] px-5 lg:px-10">
         <SectionHead
           align="wide"
           // Wider measure than the shared one: at the enlarged size the heading
@@ -155,7 +160,7 @@ export default function Results() {
                   onClick={() => setIndex(i)}
                   aria-pressed={i === index}
                   className={`relative h-1 flex-1 overflow-hidden rounded-full transition-colors ${
-                    i === index ? "bg-charcoal" : "bg-charcoal/15 hover:bg-charcoal/30"
+                    i === index ? "bg-terracotta" : "bg-taupe hover:bg-taupe/70"
                   }`}
                 >
                   <span className="sr-only">Кейс {i + 1}</span>
@@ -189,7 +194,7 @@ export default function Results() {
                 ))}
               </dl>
 
-              <p className="mt-[clamp(0.65rem,1.4vh,1.5rem)] border-t border-charcoal/10 pt-[clamp(0.75rem,1.6vh,1.25rem)] text-[clamp(14px,1.6vh,15px)] leading-relaxed text-charcoal/70">
+              <p className="mt-[clamp(0.65rem,1.4vh,1.5rem)] border-t border-taupe/70 pt-[clamp(0.75rem,1.6vh,1.25rem)] text-[clamp(14px,1.6vh,15px)] leading-relaxed text-charcoal/85">
                 Результат индивидуален и зависит от исходного состояния, возраста и соблюдения
                 рекомендаций врача. Фотографии публикуются с письменного согласия пациента.
               </p>

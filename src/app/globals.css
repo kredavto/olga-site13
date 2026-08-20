@@ -3,69 +3,79 @@
 /* ---------------------------------------------------------------------------
    Design tokens.
 
-   Palette is the one named in the brand brief. Neutrals run cool-warm neutral
-   (not warm-craft cream), text is charcoal rather than pure black.
+   The palette, type scale, radii and shadows below are the supplied design
+   system, transcribed. Names on the left are the ones the components already
+   use, so the system lands across the whole site at once; the comment on each
+   line names the token it comes from.
 
-   Accent lock: ONE accent for the whole page, soft sage. It carries every
-   interactive and active state. Champagne is a material, not an accent: it
-   appears only as a hairline gradient on the rule under the wordmark and on
-   section dividers, never as a fill or a text color.
+   Two rules govern the accent. Terracotta is a seal: one accent for the whole
+   page, carrying interactive and emphatic states, never a large fill. And it
+   only works on a light ground. Against ink it measures 2.9:1, under the 3:1
+   even a display heading needs, so photographic sections take the light end of
+   the terracotta gradient instead, which holds 6.5:1 on ink.
 
-   Radius lock: pill for interactive, 16px for cards and media, 8px for inputs.
+   Radius follows the system's named set: 40px buttons, 24px cards, pill inputs
+   and tags, 12px navigation.
 --------------------------------------------------------------------------- */
 
 @theme {
-  --color-warm-white: #fcfcfa;
-  --color-milk: #faf9f7;
-  --color-pearl: #f7f6f3;
-  --color-ivory: #f2f0ec;
-  --color-sand: #ede8e1;
-  --color-beige: #dccfc2;
-  --color-stone: #d8d6d1;
-  --color-warm-gray: #9a9996;
-  --color-charcoal: #2b2b2b;
-  --color-graphite: #1d1d1d;
+  /* Surfaces, lightest to deepest */
+  --color-warm-white: #fef9ef; /* parchment canvas */
+  --color-milk: #fcf7ec;
+  --color-pearl: #f5eee1; /* aged paper */
+  --color-ivory: #f0e7d8;
+  --color-sand: #ebe1d1;
+  --color-beige: #ded5c8;
+  --color-stone: #d1c9bf; /* warm taupe, the outline colour */
+  --color-taupe: #d1c9bf;
 
-  /* Single locked accent */
-  --color-sage: #6e7c6b;
-  --color-sage-deep: #55604f;
-  --color-sage-wash: #eaeee7;
+  /* Ink */
+  /* Secondary text takes the system's graphite, not its ash. Ash is a light
+     grey: on aged paper it measures 3.1:1, which fails the 4.5:1 body copy
+     needs, and this site sets labels and captions in it 73 times. Graphite
+     holds 6.8:1 on the same ground. Ash stays available for decorative use. */
+  --color-warm-gray: #515151;
+  --color-ash: #808988;
+  --color-charcoal: #333333;
+  --color-ink: #2a2b2f;
+  --color-graphite: #2a2b2f; /* the dark ground on photographic sections */
 
-  /* Type set over the hero photograph. The frame's light is amber and the
-     subject wears cream, so a neutral white headline reads cold against it.
-     This is the same warm neutral family as the rest of the palette, pushed
-     one step warmer, and it is used only on photography. */
-  --color-cream: #f8f3e9;
+  /* The single accent: terracotta seal */
+  --color-terracotta: #b05a36;
+  --color-terracotta-deep: #8f4629;
+  --color-terracotta-light: #d4a68e; /* the gradient's second stop */
+  --color-terracotta-wash: #f7e9e1;
 
-  /* Champagne, used as a metallic material on hairlines only */
-  --color-champagne: #c8b392;
-  --color-champagne-light: #e7dcc6;
+  /* The accent under the names the components already carry. Sage was the old
+     locked accent; bronze and gold were the metals that resolved by ground. */
+  --color-sage: #b05a36;
+  --color-sage-deep: #8f4629;
+  --color-sage-wash: #f7e9e1;
+  --color-bronze: #8f4629; /* headings on light, 6.0:1 on parchment */
+  --color-bronze-bright: #b05a36; /* the seal itself, 4.6:1 on parchment */
+  --color-gold: #d4a68e; /* accents on dark, 6.5:1 on ink */
+  --color-cream: #fef9ef;
+  --color-champagne: #d1c9bf;
+  --color-champagne-light: #e8e1d6;
 
-  /* Champagne gold. Carries every heading set over a photograph, on the hero
-     and on the lobby section, so there is one brand gold rather than two.
-     Brighter than the hairline champagne, and brighter again than it first
-     was: over the lightened lobby wash the previous value fell to about 2.3:1
-     against the lamp globes, where this one holds a little over 3:1 and gains
-     further separation from the shadow the type carries. */
-  --color-gold: #e6c87e;
+  /* Type. The licensed faces are named first, so dropping the files in is the
+     only step needed to switch to them. Until then the stack resolves to the
+     nearest free face that ships a Cyrillic subset, which is not optional here:
+     a Latin only display face falls back silently on every Russian heading. */
+  --font-display: "Financier Display", var(--font-editorial-serif), Georgia, serif;
+  --font-sans: "Ftbase", var(--font-grotesque), system-ui, sans-serif;
+  --font-mono: "Fragment Mono", var(--font-mono-face), ui-monospace, monospace;
 
-  /* The same metal read on a light ground. No true gold survives on near white:
-     the bright value measures 1.5:1 against pearl and even a mid gold only
-     reaches 2.7:1, both under the 3:1 large text threshold. This deep antique
-     bronze holds 4.9:1 and still reads as the warm metal rather than as brown. */
-  --color-bronze: #86651f;
+  /* Radius */
+  --radius-sm: 2px;
+  --radius-nav: 12px;
+  --radius-card: 24px;
+  --radius-input: 9999px;
+  --radius-button: 40px;
 
-  /* The same bronze opened up, for a heading that has to carry more presence
-     than the section title above it. Measures 3.5:1 on warm white, which is
-     above the 3:1 large text threshold and as bright as this metal gets before
-     it drops under it. */
-  --color-bronze-bright: #a8801f;
-
-  --font-display: var(--font-display-serif), "Playfair Display", Georgia, serif;
-  --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
-
-  --radius-card: 16px;
-  --radius-input: 8px;
+  /* Shadows */
+  --shadow-lg: 0 0 20px 0 rgba(0, 0, 0, 0.15);
+  --shadow-xl: 12px 32px 80px 0 rgba(42, 43, 47, 0.1);
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
@@ -84,8 +94,9 @@
     background-color: var(--color-warm-white);
     color: var(--color-charcoal);
     font-family: var(--font-sans);
-    font-size: 17px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.37px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -105,7 +116,7 @@
   /* Focus lives on the accent so keyboard users get the same visual language
      as hover. Never removed, only restyled. */
   :focus-visible {
-    outline: 2px solid var(--color-sage-deep);
+    outline: 2px solid var(--color-terracotta);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -117,7 +128,7 @@
     font-weight: 400;
     /* Display serif is set optically: tight but never clipping italic
        descenders, which is why leading never drops below 1.05. */
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
 
@@ -129,10 +140,10 @@
 @layer utilities {
   /* Small uppercase meta label. Rationed: the page uses very few of these. */
   .u-meta {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     line-height: 1.4;
   }
@@ -141,10 +152,10 @@
      a size override on .u-meta: two font-size utilities on one element resolve
      by stylesheet order, not by the order they are written in the markup. */
   .u-meta-lg {
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
+    font-weight: 400;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     line-height: 1.4;
   }
@@ -176,9 +187,9 @@
     background-image: linear-gradient(
       90deg,
       transparent,
-      var(--color-champagne) 18%,
-      var(--color-champagne-light) 50%,
-      var(--color-champagne) 82%,
+      var(--color-taupe) 18%,
+      var(--color-terracotta-light) 50%,
+      var(--color-taupe) 82%,
       transparent
     );
   }
@@ -187,7 +198,7 @@
      panel reads as a physical surface. Falls back to a solid fill when the
      visitor asks for reduced transparency. */
   .u-glass {
-    background-color: color-mix(in srgb, var(--color-warm-white) 62%, transparent);
+    background-color: color-mix(in srgb, var(--color-warm-white) 72%, transparent);
     backdrop-filter: blur(20px) saturate(1.4);
     -webkit-backdrop-filter: blur(20px) saturate(1.4);
     border: 1px solid color-mix(in srgb, var(--color-warm-white) 70%, transparent);
@@ -197,7 +208,7 @@
   }
 
   .u-glass-dark {
-    background-color: color-mix(in srgb, var(--color-graphite) 42%, transparent);
+    background-color: color-mix(in srgb, var(--color-ink) 46%, transparent);
     backdrop-filter: blur(20px) saturate(1.2);
     -webkit-backdrop-filter: blur(20px) saturate(1.2);
     border: 1px solid color-mix(in srgb, white 16%, transparent);
@@ -212,7 +223,7 @@
     }
 
     .u-glass-dark {
-      background-color: var(--color-graphite);
+      background-color: var(--color-ink);
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
     }
@@ -225,7 +236,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.32;
+    opacity: 0.18;
     mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
   }
@@ -234,22 +245,22 @@
     mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
   }
 
-  /* The gold wave that crosses a card on hover. A band wider than it needs to
+  /* The accent wave that crosses a card on hover. A band wider than it needs to
      be, tilted off vertical and swept corner to corner, clipped by the card's
      own overflow so it reads as light travelling across the surface. Driven by
      CSS rather than by the motion library: it is a one shot on a hover state,
      which is exactly what a keyframe animation is for, and it keeps the card
      from holding React state for a purely visual effect. */
-  .u-gold-wave {
+  .u-accent-wave {
     transform: translateX(-160%) rotate(12deg);
     opacity: 0;
   }
 
-  .group:hover .u-gold-wave {
-    animation: u-gold-wave 1.05s cubic-bezier(0.3, 0.9, 0.4, 1);
+  .group:hover .u-accent-wave {
+    animation: u-accent-wave 1.05s cubic-bezier(0.3, 0.9, 0.4, 1);
   }
 
-  @keyframes u-gold-wave {
+  @keyframes u-accent-wave {
     0% {
       transform: translateX(-160%) rotate(12deg);
       opacity: 0;

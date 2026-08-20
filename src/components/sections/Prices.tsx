@@ -68,7 +68,7 @@ export default function Prices() {
 
   return (
     <section id="prices" className="bg-ivory py-24 lg:py-32">
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+      <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHead
             eyebrow="Стоимость"
@@ -90,13 +90,13 @@ export default function Prices() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Найти в прайсе"
-                  className="h-12 w-full rounded-full border border-charcoal/15 bg-warm-white pl-11 pr-4 text-[15px] outline-none transition-colors placeholder:text-warm-gray focus:border-sage"
+                  className="h-12 w-full rounded-full border border-taupe bg-warm-white pl-11 pr-4 text-[15px] outline-none transition-colors placeholder:text-warm-gray focus:border-sage"
                 />
               </label>
               {/* TODO: generate the PDF from this same data at build time. */}
               <a
                 href="/price.pdf"
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-charcoal/20 px-5 text-[15px] transition-colors hover:border-charcoal/50"
+                className="inline-flex h-12 items-center gap-2 rounded-full border border-taupe px-5 text-[15px] transition-colors hover:border-terracotta"
               >
                 <DownloadSimple size={17} />
                 Прайс в PDF
@@ -117,14 +117,14 @@ export default function Prices() {
                     onClick={() => setTab(category.id)}
                     aria-pressed={isActive}
                     className={`relative shrink-0 rounded-full px-5 py-2.5 text-[14px] transition-colors duration-300 ${
-                      isActive ? "text-warm-white" : "text-charcoal/70 hover:text-charcoal"
+                      isActive ? "text-warm-white" : "text-charcoal/85 hover:text-charcoal"
                     }`}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="price-tab"
                         transition={{ type: "spring", stiffness: 320, damping: 30 }}
-                        className="absolute inset-0 rounded-full bg-charcoal"
+                        className="absolute inset-0 rounded-full bg-terracotta"
                       />
                     )}
                     <span className="relative">{category.label}</span>
@@ -143,7 +143,7 @@ export default function Prices() {
                 администратору, он подскажет.
               </p>
             ) : (
-              <ul className="divide-y divide-charcoal/10 border-t border-charcoal/10">
+              <ul className="divide-y divide-taupe/70 border-t border-taupe/70">
                 {rows.map((service, index) => (
                   <Reveal as="li" key={service.slug} delay={Math.min(index * 0.04, 0.24)}>
                     <div className="grid gap-4 py-7 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start sm:gap-10">
@@ -176,7 +176,7 @@ export default function Prices() {
                         <button
                           type="button"
                           onClick={() => open({ service: service.title })}
-                          className="whitespace-nowrap rounded-full border border-charcoal/20 px-5 py-2.5 text-[14px] transition-colors hover:border-charcoal/60 hover:bg-charcoal/[0.04]"
+                          className="whitespace-nowrap rounded-full border border-taupe px-5 py-2.5 text-[14px] transition-colors hover:border-terracotta hover:bg-charcoal/[0.04]"
                         >
                           Записаться
                         </button>
@@ -191,14 +191,14 @@ export default function Prices() {
           <Reveal delay={0.14}>
             <div className="sticky top-28 space-y-6">
               {countdown && (
-                <div className="rounded-card bg-charcoal p-7 text-warm-white">
+                <div className="rounded-card bg-ink p-7 text-warm-white">
                   <p className="u-meta text-warm-white/50">Действует до конца месяца</p>
                   <h3 className="mt-4 font-display text-[26px] leading-tight">{promo.title}</h3>
                   <div className="mt-5 flex items-baseline gap-3">
                     <span className="font-display text-[30px] tabular-nums">
                       {formatPrice(promo.nowPrice)} ₽
                     </span>
-                    <span className="text-[17px] tabular-nums text-warm-white/40 line-through">
+                    <span className="text-[17px] tabular-nums text-warm-white/60 line-through">
                       {formatPrice(promo.wasPrice)} ₽
                     </span>
                   </div>
@@ -210,7 +210,7 @@ export default function Prices() {
                         [countdown.minutes, ["минута", "минуты", "минут"]],
                       ] as [number, [string, string, string]][]
                     ).map(([value, forms]) => (
-                      <div key={forms[0]} className="rounded-input bg-white/10 px-4 py-3 text-center">
+                      <div key={forms[0]} className="rounded-full bg-white/10 px-4 py-3 text-center">
                         <p className="font-display text-[22px] leading-none tabular-nums">{value}</p>
                         <p className="mt-1.5 text-[11px] text-warm-white/50">{plural(value, forms)}</p>
                       </div>
@@ -226,7 +226,7 @@ export default function Prices() {
                 </div>
               )}
 
-              <div className="rounded-card border border-charcoal/12 p-7">
+              <div className="rounded-card border border-taupe/70 p-7">
                 <h3 className="font-display text-[22px] leading-tight">Что входит в стоимость</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-warm-gray">
                   Цена включает работу врача, препарат или расходный материал и постпроцедурный

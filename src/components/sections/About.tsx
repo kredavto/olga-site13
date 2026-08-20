@@ -37,7 +37,7 @@ export default function About() {
       <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/80 to-graphite/40" />
       <div className="u-grain absolute inset-0" />
 
-      <div className="relative mx-auto max-w-[1400px] px-5 py-28 lg:px-10 lg:py-40">
+      <div className="relative mx-auto max-w-[1280px] px-5 py-28 lg:px-10 lg:py-40">
         <div className="max-w-[62ch]">
           <Reveal kind="focus">
             <p className="font-display text-[clamp(1.75rem,3.2vw,2.8rem)] leading-[1.28] text-gold">

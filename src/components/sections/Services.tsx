@@ -123,7 +123,7 @@ export default function Services() {
 
   return (
     <section id="services" className="bg-pearl py-24 lg:py-32">
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+      <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <SectionHead
             eyebrow="Направления"
@@ -145,7 +145,7 @@ export default function Services() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Найти услугу"
-                className="h-12 w-full rounded-full border border-charcoal/15 bg-warm-white pl-11 pr-4 text-[17px] outline-none transition-colors placeholder:text-warm-gray focus:border-sage"
+                className="h-12 w-full rounded-full border border-taupe bg-warm-white pl-11 pr-4 text-[17px] outline-none transition-colors placeholder:text-warm-gray focus:border-sage"
               />
             </label>
           </Reveal>
@@ -173,7 +173,7 @@ export default function Services() {
                     <motion.span
                       layoutId="service-tab"
                       transition={{ type: "spring", stiffness: 320, damping: 30 }}
-                      className="absolute inset-0 rounded-full bg-charcoal"
+                      className="absolute inset-0 rounded-full bg-terracotta"
                     />
                   )}
                   <span className="relative">{tab.label}</span>
@@ -185,7 +185,7 @@ export default function Services() {
       </div>
 
       {visible.length === 0 ? (
-        <div className="mx-auto mt-16 max-w-[1400px] px-5 lg:px-10">
+        <div className="mx-auto mt-16 max-w-[1280px] px-5 lg:px-10">
           <p className="max-w-[46ch] font-display text-[26px] leading-snug">
             По запросу ничего не нашлось.
           </p>

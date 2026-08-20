@@ -42,7 +42,7 @@ function validate(fields: Fields): Errors {
 }
 
 const inputBase =
-  "h-12 w-full min-w-0 rounded-input border bg-milk px-4 text-[16px] outline-none transition-colors placeholder:text-warm-gray/80";
+  "h-12 w-full min-w-0 rounded-full border bg-milk px-4 text-[16px] outline-none transition-colors placeholder:text-warm-gray/80";
 
 export type BookingFormProps = {
   preset?: { service?: string; doctor?: string };
@@ -121,7 +121,7 @@ export default function BookingForm({ preset, compact, onDone }: BookingFormProp
 
       <div className="space-y-5">
         <div className="grid min-w-0 gap-2">
-          <label htmlFor={`${uid}-name`} className="u-meta text-charcoal/70">
+          <label htmlFor={`${uid}-name`} className="u-meta text-charcoal/85">
             Имя
           </label>
           <input
@@ -132,7 +132,7 @@ export default function BookingForm({ preset, compact, onDone }: BookingFormProp
             aria-invalid={Boolean(showError("name"))}
             aria-describedby={showError("name") ? `${uid}-name-err` : undefined}
             className={`${inputBase} ${
-              showError("name") ? "border-[#b4453c]" : "border-charcoal/15 focus:border-sage"
+              showError("name") ? "border-[#b4453c]" : "border-taupe focus:border-sage"
             }`}
           />
           {showError("name") && (
@@ -143,7 +143,7 @@ export default function BookingForm({ preset, compact, onDone }: BookingFormProp
         </div>
 
         <div className="grid min-w-0 gap-2">
-          <label htmlFor={`${uid}-phone`} className="u-meta text-charcoal/70">
+          <label htmlFor={`${uid}-phone`} className="u-meta text-charcoal/85">
             Телефон
           </label>
           <input
@@ -156,7 +156,7 @@ export default function BookingForm({ preset, compact, onDone }: BookingFormProp
             aria-invalid={Boolean(showError("phone"))}
             aria-describedby={showError("phone") ? `${uid}-phone-err` : undefined}
             className={`${inputBase} tabular-nums ${
-              showError("phone") ? "border-[#b4453c]" : "border-charcoal/15 focus:border-sage"
+              showError("phone") ? "border-[#b4453c]" : "border-taupe focus:border-sage"
             }`}
           />
           {showError("phone") && (
@@ -168,14 +168,14 @@ export default function BookingForm({ preset, compact, onDone }: BookingFormProp
 
         <div className="grid min-w-0 gap-5 sm:grid-cols-2 sm:gap-4">
           <div className="grid min-w-0 gap-2">
-            <label htmlFor={`${uid}-service`} className="u-meta text-charcoal/70">
+            <label htmlFor={`${uid}-service`} className="u-meta text-charcoal/85">
               Интересует
             </label>
             <select
               id={`${uid}-service`}
               value={fields.service}
               onChange={(e) => set("service", e.target.value)}
-              className={`${inputBase} border-charcoal/15 px-3.5 focus:border-sage`}
+              className={`${inputBase} border-taupe px-3.5 focus:border-sage`}
             >
               <option value="">Пока не знаю</option>
               {services.map((service) => (
@@ -187,14 +187,14 @@ export default function BookingForm({ preset, compact, onDone }: BookingFormProp
           </div>
 
           <div className="grid min-w-0 gap-2">
-            <label htmlFor={`${uid}-doctor`} className="u-meta text-charcoal/70">
+            <label htmlFor={`${uid}-doctor`} className="u-meta text-charcoal/85">
               Врач
             </label>
             <select
               id={`${uid}-doctor`}
               value={fields.doctor}
               onChange={(e) => set("doctor", e.target.value)}
-              className={`${inputBase} border-charcoal/15 px-3.5 focus:border-sage`}
+              className={`${inputBase} border-taupe px-3.5 focus:border-sage`}
             >
               <option value="">Любой свободный</option>
               {doctors.map((doctor) => (
@@ -230,7 +230,7 @@ export default function BookingForm({ preset, compact, onDone }: BookingFormProp
       </div>
 
       {status === "failed" && (
-        <p className="mt-5 rounded-input bg-[#fbeceb] px-4 py-3 text-[14px] leading-relaxed text-[#9b3a32]">
+        <p className="mt-5 rounded-full bg-[#fbeceb] px-4 py-3 text-[14px] leading-relaxed text-[#9b3a32]">
           Не получилось отправить заявку. Позвоните нам, мы запишем вас вручную.
         </p>
       )}

@@ -23,7 +23,7 @@ const cellSpans = [
 export default function Equipment() {
   return (
     <section id="equipment" className="bg-pearl py-24 lg:py-32">
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+      <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
         <SectionHead
           align="wide"
           title={
@@ -43,7 +43,7 @@ export default function Equipment() {
                 kind="settle"
                 key={device.name}
                 delay={index * 0.05}
-                className={`${cellSpans[index]} group relative overflow-hidden rounded-card bg-charcoal`}
+                className={`${cellSpans[index]} group relative overflow-hidden rounded-card bg-ink`}
               >
                 <Photo
                   src={device.photo}

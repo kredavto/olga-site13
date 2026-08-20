@@ -24,7 +24,7 @@ export default function Doctors() {
 
   return (
     <section id="doctors" className="u-grain relative overflow-hidden bg-graphite py-24 lg:py-32">
-      <div className="relative mx-auto max-w-[1400px] px-5 lg:px-10">
+      <div className="relative mx-auto max-w-[1280px] px-5 lg:px-10">
         <SectionHead
           tone="light"
           align="wide"
@@ -39,7 +39,7 @@ export default function Doctors() {
         <div className="mt-16 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {doctors.map((doctor, index) => (
             <Reveal as="article" kind="settle" key={doctor.slug} delay={index * 0.07}>
-              <div className="group relative aspect-[3/4] overflow-hidden rounded-card bg-charcoal">
+              <div className="group relative aspect-[3/4] overflow-hidden rounded-card bg-ink">
                 <Photo
                   src={doctor.photo}
                   seed={doctor.photoSeed}
@@ -65,7 +65,7 @@ export default function Doctors() {
                       <p className="pt-4 text-[13px] leading-relaxed text-warm-white/65">
                         {doctor.focus}
                       </p>
-                      <p className="pt-3 text-[12px] leading-relaxed text-warm-white/45">
+                      <p className="pt-3 text-[12px] leading-relaxed text-warm-white/65">
                         {doctor.education}
                       </p>
                       <div className="flex flex-wrap gap-2 pt-4">
@@ -138,7 +138,7 @@ export default function Doctors() {
 
                   {/* Scans of the actual documents belong here. See
                       docs/CONTENT-CHECKLIST.md. */}
-                  <p className="mt-6 rounded-input bg-sage-wash px-4 py-3 text-[13px] leading-relaxed text-sage-deep">
+                  <p className="mt-6 rounded-full bg-sage-wash px-4 py-3 text-[13px] leading-relaxed text-sage-deep">
                     Оригиналы дипломов и сертификатов находятся в клинике. Администратор покажет их
                     по вашей просьбе.
                   </p>

@@ -128,7 +128,7 @@ export default function Hero() {
 
       <motion.div
         style={{ y: copyY, opacity: copyOpacity }}
-        className="relative mx-auto flex min-h-[100dvh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-32 lg:justify-center lg:px-10 lg:pb-24 lg:pt-28"
+        className="relative mx-auto flex min-h-[100dvh] max-w-[1280px] flex-col justify-end px-5 pb-16 pt-32 lg:justify-center lg:px-10 lg:pb-24 lg:pt-28"
       >
         {/* The copy column stops before the subject starts. Capping it at 54%
             on wide screens is what keeps the type inside the shadowed part of

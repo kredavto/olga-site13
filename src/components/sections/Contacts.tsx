@@ -26,7 +26,7 @@ const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&lay
 export default function Contacts() {
   return (
     <section id="contacts" className="bg-warm-white py-24 lg:py-32">
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+      <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
         <SectionHead
           eyebrow="Как добраться"
           align="wide"
@@ -49,13 +49,13 @@ export default function Contacts() {
 
           <div className="grid min-w-0 gap-6 [&>*]:min-w-0">
             <Reveal delay={0.08}>
-              <div className="rounded-card border border-charcoal/12 p-7">
+              <div className="rounded-card border border-taupe/70 p-7">
                 <h3 className="font-display text-[24px] leading-tight">Адрес</h3>
                 <address className="mt-4 not-italic leading-relaxed text-warm-gray">
                   {contacts.address}
                 </address>
 
-                <dl className="mt-6 space-y-4 border-t border-charcoal/10 pt-6 text-[15px]">
+                <dl className="mt-6 space-y-4 border-t border-taupe/70 pt-6 text-[15px]">
                   <div>
                     <dt className="u-meta text-warm-gray">Метро</dt>
                     <dd className="mt-1.5">

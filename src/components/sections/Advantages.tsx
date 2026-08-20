@@ -10,14 +10,13 @@ import { advantages } from "@/content/clinic";
 /**
  * The reassurance block, directly under the hero.
  *
- * The ground is black silk, so this is the one section on the page where gold
- * has real room: the fabric never rises above mid grey, and the type sits at
- * better than 10:1 without needing the heavy wash the lobby photograph did.
- * Headings take the gold, body copy under them is white, which keeps the
- * hierarchy on colour rather than only on size and weight.
+ * The ground is black silk, so the accent here is the light end of the
+ * terracotta gradient rather than the seal itself: the seal measures 2.9:1 on
+ * this ground, the light end 6.5:1. Headings take it, body copy under them is
+ * parchment, which keeps the hierarchy on colour as well as on size.
  *
- * Everything here is set in cards. Each carries a pointer driven tilt, a gold
- * light wave that sweeps across on hover, and a mark in the corner with its own
+ * Everything here is set in cards. Each carries a pointer driven tilt, an
+ * accent wave that sweeps across on hover, and a mark in the corner with its own
  * idle motion, one per card, so the six read as a set rather than as one card
  * repeated. All of it is motion values and CSS transforms, so a pointer moving
  * across the grid never triggers a React render.
@@ -123,7 +122,7 @@ function AdvantageCard({
   const glow = useTransform(
     [glowX, glowY],
     ([x, y]: number[]) =>
-      `radial-gradient(circle at ${x}% ${y}%, rgba(230,200,126,0.20), transparent 62%)`,
+      `radial-gradient(circle at ${x}% ${y}%, rgba(212,166,142,0.22), transparent 62%)`,
   );
 
   const onMove = (event: React.PointerEvent) => {
@@ -161,10 +160,10 @@ function AdvantageCard({
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         />
 
-        {/* The gold wave, swept once per hover. See .u-gold-wave. */}
+        {/* The accent wave, swept once per hover. See .u-accent-wave. */}
         <span
           aria-hidden
-          className="u-gold-wave pointer-events-none absolute -inset-y-16 left-0 w-1/3 bg-[linear-gradient(90deg,transparent,rgba(230,200,126,0.18),rgba(252,240,208,0.66),rgba(230,200,126,0.18),transparent)] blur-[2px]"
+          className="u-accent-wave pointer-events-none absolute -inset-y-16 left-0 w-1/3 bg-[linear-gradient(90deg,transparent,rgba(176,90,54,0.22),rgba(212,166,142,0.72),rgba(176,90,54,0.22),transparent)] blur-[2px]"
         />
 
         {/* Content rides forward on Z so the tilt separates it from the face. */}
@@ -205,7 +204,7 @@ export default function Advantages() {
           flatten the fabric into a black field. */}
       <div className="absolute inset-0 bg-graphite/30" />
 
-      <div className="relative mx-auto w-full max-w-[1400px] px-5 lg:px-10">
+      <div className="relative mx-auto w-full max-w-[1280px] px-5 lg:px-10">
         <div className="grid gap-[clamp(0.75rem,1.7vh,1.5rem)] lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-[clamp(1rem,2vh,2rem)]">
           <Reveal className="[perspective:1200px]">
             <div className="h-full rounded-card border border-gold/20 bg-white/[0.05] p-[clamp(1.25rem,3vh,2.5rem)] backdrop-blur-[6px]">

@@ -30,12 +30,12 @@ export default function StickyCta() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 24 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-x-0 bottom-0 z-[65] flex items-center gap-3 border-t border-charcoal/10 bg-warm-white/90 p-4 backdrop-blur-xl md:inset-x-auto md:bottom-8 md:right-8 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none"
+          className="fixed inset-x-0 bottom-0 z-[65] flex items-center gap-3 border-t border-taupe/70 bg-warm-white/90 p-4 backdrop-blur-xl md:inset-x-auto md:bottom-8 md:right-8 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none"
         >
           <a
             href={`tel:${contacts.phoneHref}`}
             aria-label={`Позвонить ${contacts.phone}`}
-            className="flex size-[52px] shrink-0 items-center justify-center rounded-full border border-charcoal/20 bg-warm-white text-charcoal transition-colors hover:bg-charcoal hover:text-warm-white"
+            className="flex size-[52px] shrink-0 items-center justify-center rounded-full border border-taupe bg-warm-white text-charcoal transition-colors hover:bg-charcoal hover:text-warm-white"
           >
             <Phone size={19} />
           </a>

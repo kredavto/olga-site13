@@ -16,7 +16,7 @@ export default function Drugs() {
 
   return (
     <section className="bg-warm-white py-24 lg:py-32">
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+      <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-20">
           <div>
             <SectionHead
@@ -38,7 +38,7 @@ export default function Drugs() {
                       .map((drug) => (
                         <div
                           key={drug.name}
-                          className="rounded-card border border-charcoal/10 bg-milk p-5 transition-colors duration-300 hover:border-sage/50"
+                          className="rounded-card border border-taupe/70 bg-milk p-5 transition-colors duration-300 hover:border-sage/50"
                         >
                           <p className="font-display text-[22px] leading-none">{drug.name}</p>
                           <p className="mt-3 text-[14px] leading-relaxed text-warm-gray">

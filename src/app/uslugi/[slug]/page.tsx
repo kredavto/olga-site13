@@ -92,8 +92,8 @@ export default async function ServicePage({ params }: Params) {
           <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/80 to-graphite/30" />
           <div className="u-grain absolute inset-0" />
 
-          <div className="relative mx-auto max-w-[1400px] px-5 lg:px-10">
-            <nav aria-label="Хлебные крошки" className="u-meta text-warm-white/45">
+          <div className="relative mx-auto max-w-[1280px] px-5 lg:px-10">
+            <nav aria-label="Хлебные крошки" className="u-meta text-warm-white/65">
               <Link href="/" className="transition-colors hover:text-warm-white">
                 Главная
               </Link>
@@ -117,7 +117,7 @@ export default async function ServicePage({ params }: Params) {
         </header>
 
         <section className="bg-warm-white py-20 lg:py-28">
-          <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+          <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
             <div className="grid gap-14 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-20">
               <div>
                 <Reveal>
@@ -128,7 +128,7 @@ export default async function ServicePage({ params }: Params) {
                 <ul className="mt-8 space-y-6">
                   {service.includes.map((item, index) => (
                     <Reveal as="li" key={item} delay={index * 0.06}>
-                      <div className="flex gap-5 border-b border-charcoal/10 pb-6">
+                      <div className="flex gap-5 border-b border-taupe/70 pb-6">
                         <span className="font-display text-[20px] tabular-nums text-warm-gray">
                           {String(index + 1).padStart(2, "0")}
                         </span>
@@ -147,13 +147,13 @@ export default async function ServicePage({ params }: Params) {
               </div>
 
               <Reveal delay={0.1}>
-                <aside className="sticky top-28 rounded-card border border-charcoal/12 p-8">
+                <aside className="sticky top-28 rounded-card border border-taupe/70 p-8">
                   <p className="u-meta text-warm-gray">Стоимость</p>
                   <p className="mt-3 font-display text-[38px] leading-none tabular-nums">
                     от {formatPrice(service.priceFrom)} ₽
                   </p>
 
-                  <dl className="mt-8 space-y-5 border-t border-charcoal/10 pt-6 text-[15px]">
+                  <dl className="mt-8 space-y-5 border-t border-taupe/70 pt-6 text-[15px]">
                     {[
                       ["Длительность", service.duration],
                       ["Анестезия", service.anesthesia],
@@ -179,7 +179,7 @@ export default async function ServicePage({ params }: Params) {
         </section>
 
         <section className="bg-pearl py-20 lg:py-28">
-          <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+          <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
             <Reveal>
               <h2 className="text-[clamp(1.8rem,3.2vw,2.6rem)] leading-tight text-bronze">
                 Кто проводит процедуру
@@ -189,7 +189,7 @@ export default async function ServicePage({ params }: Params) {
             <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
               {doctors.map((doctor, index) => (
                 <Reveal as="article" key={doctor.slug} delay={index * 0.06}>
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-card bg-charcoal">
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-card bg-ink">
                     <Photo
                       src={doctor.photo}
                       seed={doctor.photoSeed}
@@ -217,14 +217,14 @@ export default async function ServicePage({ params }: Params) {
 
         {related.length > 0 && (
           <section className="bg-warm-white py-20 lg:py-28">
-            <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+            <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
               <Reveal>
                 <h2 className="text-[clamp(1.8rem,3.2vw,2.6rem)] leading-tight text-bronze">
                   Другие процедуры направления
                 </h2>
               </Reveal>
 
-              <ul className="mt-10 divide-y divide-charcoal/10 border-t border-charcoal/10">
+              <ul className="mt-10 divide-y divide-taupe/70 border-t border-taupe/70">
                 {related.map((item, index) => (
                   <Reveal as="li" key={item.slug} delay={index * 0.05}>
                     <Link

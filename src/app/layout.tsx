@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Playfair_Display } from "next/font/google";
+import { Inter, JetBrains_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
 import { BookingProvider } from "@/components/BookingProvider";
@@ -11,27 +11,38 @@ import StickyCta from "@/components/StickyCta";
 import { brand, contacts, legal } from "@/content/clinic";
 
 /**
- * Display face is a Didone: the reference screenshots are almost all
- * high-contrast serif over photography, and that contrast is what makes the
- * type read as couture rather than as a medical brochure.
+ * Faces.
  *
- * The choice is constrained by language. The site is in Russian, so the display
- * face must ship a real Cyrillic subset. A Latin-only Didone silently falls back
- * to the sans for every heading, which collapses the whole typographic idea.
- * Manrope carries every functional string, so the serif never has to do UI work.
+ * The design system names three licensed faces: Financier Display, Ftbase and
+ * Fragment Mono. None can be fetched here, so each token stack names the real
+ * face first and falls back to the nearest free equivalent that ships a real
+ * Cyrillic subset. Dropping the licensed files in is the only step needed to
+ * switch: no component references a face directly, they all go through the
+ * three font tokens.
+ *
+ * The Cyrillic requirement is not a nicety. A Latin only display face falls
+ * back silently on every Russian heading, which collapses the typography
+ * without producing an error anywhere.
  */
-const playfair = Playfair_Display({
+const editorialSerif = Source_Serif_4({
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500"],
+  weight: ["300", "400", "600"],
   style: ["normal", "italic"],
-  variable: "--font-display-serif",
+  variable: "--font-editorial-serif",
   display: "swap",
 });
 
-const manrope = Manrope({
+const grotesque = Inter({
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600"],
-  variable: "--font-manrope",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-grotesque",
+  display: "swap",
+});
+
+const monoFace = JetBrains_Mono({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500"],
+  variable: "--font-mono-face",
   display: "swap",
 });
 
@@ -123,7 +134,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" className={`${playfair.variable} ${manrope.variable}`}>
+    <html lang="ru" className={`${editorialSerif.variable} ${grotesque.variable} ${monoFace.variable}`}>
       <body>
         <script
           type="application/ld+json"

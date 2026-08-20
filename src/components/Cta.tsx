@@ -6,7 +6,7 @@ import { useRef, type ReactNode } from "react";
 type Variant = "primary" | "onDark" | "secondary" | "ghost";
 
 const base =
-  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-colors duration-300";
+  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-button font-medium transition-colors duration-300";
 
 /** Size is a prop, not a className override: padding and label size have to
  *  move together, and two font-size utilities on one element resolve by
@@ -22,13 +22,14 @@ const sizes = {
  * and a one sided override is how a white button ends up with a white label.
  */
 const styles: Record<Variant, string> = {
-  // Charcoal on a light section. Label contrast 12.6:1.
-  primary: "bg-charcoal text-warm-white hover:bg-graphite",
-  // The inverse, for light type on dark sections. Label contrast 12.6:1.
-  onDark: "bg-warm-white text-charcoal hover:bg-sand",
+  // The seal. This is the one place terracotta appears as a fill, and it is
+  // why the accent is rationed everywhere else. Label contrast 4.9:1.
+  primary: "bg-terracotta text-warm-white hover:bg-terracotta-deep",
+  // The inverse, for light type on dark sections. Label contrast 11.9:1.
+  onDark: "bg-warm-white text-ink hover:bg-sand",
   // Outlined, for light sections.
   secondary:
-    "border border-charcoal/25 text-charcoal hover:border-charcoal/60 hover:bg-charcoal/[0.04]",
+    "border border-taupe text-ink hover:border-terracotta hover:bg-terracotta-wash",
   // Over photography, always with its own scrim so the label stays legible.
   ghost:
     "border border-white/40 bg-black/35 text-warm-white backdrop-blur-md hover:bg-black/50",

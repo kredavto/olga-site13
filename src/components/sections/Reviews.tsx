@@ -14,7 +14,7 @@ import { ratings, reviews } from "@/content/clinic";
 export default function Reviews() {
   return (
     <section className="bg-warm-white py-24 lg:py-32">
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+      <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
           <div>
             <SectionHead
@@ -25,7 +25,7 @@ export default function Reviews() {
               }
             />
 
-            <div className="mt-10 space-y-px overflow-hidden rounded-card bg-charcoal/10">
+            <div className="mt-10 space-y-px overflow-hidden rounded-card bg-taupe">
               {ratings.map((item) => (
                 <Reveal key={item.source}>
                   <div className="flex items-baseline justify-between gap-4 bg-warm-white px-6 py-5">
@@ -57,7 +57,7 @@ export default function Reviews() {
                 delay={index * 0.07}
                 className={index % 2 === 1 ? "sm:mt-12" : undefined}
               >
-                <figure className="h-full rounded-card border border-charcoal/10 bg-milk p-7">
+                <figure className="h-full rounded-card border border-taupe/70 bg-milk p-7">
                   <div className="flex gap-1 text-sage" aria-label={`Оценка ${review.rating} из 5`}>
                     {Array.from({ length: review.rating }).map((_, i) => (
                       <Star key={i} size={13} weight="fill" aria-hidden />
