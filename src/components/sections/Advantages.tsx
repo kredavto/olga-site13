@@ -28,24 +28,33 @@ export default function Advantages() {
     // section grows past the screen, which is the honest outcome for seven
     // blocks of text on a phone.
     <section className="u-grain relative flex min-h-[100dvh] items-center overflow-hidden bg-warm-white py-[clamp(3.25rem,5.5vh,6rem)]">
-      <Photo
-        src="/photo/section-stone.jpg"
-        seed="stone"
-        tone="light"
-        spec="1024 x 1536"
-        label="Телефон с заставкой клиники на створке раковины, травертин, мягкий солнечный свет"
-        sizes="100vw"
-        className="object-cover object-center"
-      />
+      {/* The frame is contained rather than cropped, so the whole still life is
+          on the page: the shell, the phone and the shadow across the travertine
+          all read. Contained means the portrait source no longer fills a
+          landscape band, so it takes the right of the section and the column
+          takes the left, instead of the two sharing one surface.
 
-      {/* Heavier than it was under the cards, for the reason above. The second
-          layer is weighted to the left, where the column sits, so the right of
-          the frame keeps more of the photograph. */}
-      <div className="absolute inset-0 bg-warm-white/82" />
-      <div className="absolute inset-0 bg-gradient-to-r from-warm-white/70 via-warm-white/20 to-transparent" />
+          Below lg there is no room for that pairing. There the photograph sits
+          behind the text at low opacity, still whole, as a warm ground. */}
+      <div className="absolute inset-y-0 right-0 w-full opacity-25 lg:w-[46%] lg:opacity-100">
+        <Photo
+          src="/photo/section-stone.jpg"
+          seed="stone"
+          tone="light"
+          spec="1024 x 1536"
+          label="Телефон с заставкой клиники на створке раковины, травертин, мягкий солнечный свет"
+          sizes="(max-width: 1024px) 100vw, 46vw"
+          className="object-contain object-center brightness-[1.06] saturate-[1.04] lg:object-right"
+        />
+      </div>
+
+      {/* Only the edge of the photograph needs softening now: the type sits on
+          parchment, not on the image. The band is narrow and one sided, so the
+          contained frame does not end in a hard vertical seam. */}
+      <div className="absolute inset-y-0 right-0 hidden w-[52%] bg-gradient-to-r from-warm-white via-warm-white/25 to-transparent lg:block" />
 
       <div className="relative mx-auto w-full max-w-[1280px] px-5 lg:px-10">
-        <div className="max-w-[46rem]">
+        <div className="max-w-[46rem] lg:max-w-[32rem] xl:max-w-[38rem]">
           <Reveal>
             <span aria-hidden className="u-rule-champagne block h-px w-14" />
             <h2 className="mt-[clamp(0.75rem,2vh,1.5rem)] text-[min(clamp(1.85rem,3.4vw,2.9rem),4.4vh)] leading-[1.12] text-terracotta">
