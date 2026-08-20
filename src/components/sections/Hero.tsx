@@ -94,9 +94,9 @@ export default function Hero() {
           falloff that gives the image its depth. At desktop it is barely there,
           just enough to settle the type. Portrait is the opposite case: the crop
           sits on lit skin, so the bottom carries a real gradient. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-graphite/70 via-graphite/25 to-transparent md:from-graphite/45 md:via-transparent md:to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-graphite/60 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-[80%] bg-gradient-to-t from-graphite/95 via-graphite/72 to-transparent md:h-56 md:from-graphite/60 md:via-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-graphite/56 via-graphite/16 to-transparent md:from-graphite/34 md:via-transparent md:to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-graphite/48 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-[80%] bg-gradient-to-t from-graphite/88 via-graphite/58 to-transparent md:h-56 md:from-graphite/46 md:via-transparent" />
 
       <motion.div
         aria-hidden
