@@ -355,7 +355,6 @@ export const doctors: Doctor[] = [
     ],
     photoSeed: "lumera-doctor-av",
     photo: "/photo/doctors/vereschagina.jpg",
-    photoPosition: "top",
   },
   {
     slug: "oganesyan",
@@ -414,8 +413,6 @@ export type Device = {
   photoSeed: string;
   /** Path under /public. Every platform has its own frame. */
   photo: string;
-  /** Where the crop anchors. Portrait sources of tall consoles need "top". */
-  photoPosition?: "top" | "center";
 };
 
 export const devices: Device[] = [
@@ -468,7 +465,6 @@ export const devices: Device[] = [
     advantage: "Криогенное охлаждение кожи в момент импульса",
     photoSeed: "lumera-device-candela",
     photo: "/photo/devices/candela.jpg",
-    photoPosition: "top",
   },
   {
     name: "M22",

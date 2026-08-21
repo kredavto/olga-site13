@@ -34,7 +34,7 @@ export default function Equipment() {
           body="Каждая платформа имеет регистрационное удостоверение и проходит плановое сервисное обслуживание. Мы называем производителя и страну, потому что это проверяемо."
         />
 
-        <div className="mt-14 grid auto-rows-[minmax(220px,auto)] gap-4 sm:grid-cols-2 lg:grid-cols-12">
+        <div className="mt-14 grid auto-rows-[minmax(300px,auto)] gap-4 sm:grid-cols-2 lg:grid-cols-12">
           {devices.map((device, index) => {
             const isLead = index === 0;
             return (
@@ -45,41 +45,43 @@ export default function Equipment() {
                 delay={index * 0.05}
                 className={`${cellSpans[index]} group relative overflow-hidden rounded-card bg-ink`}
               >
-                <Photo
-                  src={device.photo}
-                  seed={device.photoSeed}
-                  tone="dark"
-                  spec={isLead ? "1200 x 900" : "800 x 600"}
-                  label={`${device.name}: аппарат в кабинете, деталь панели крупным планом`}
-                  sizes={isLead ? "(max-width: 1024px) 100vw, 58vw" : "(max-width: 1024px) 100vw, 33vw"}
-                  className={`object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] ${
-                    device.photoPosition === "top" ? "object-top" : "object-center"
+                {/* The frame is contained and given its own band at the top of
+                    the cell, so the whole platform is visible and the caption
+                    sits under it on the ink rather than across it. A cover crop
+                    cut the console, the screen or the handpiece off every card;
+                    containing it without reserving the space put the type over
+                    the machine instead. */}
+                <div
+                  className={`absolute inset-x-4 top-4 ${
+                    isLead ? "bottom-[46%]" : "bottom-[58%]"
                   }`}
-                />
-
-                {/* The platforms are white and grey machines under clinical
-                    light, so these cards are the brightest photography on the
-                    page. The scrim reaches further up the frame than a bottom
-                    edge gradient would, and the type carries a halo on top: a
-                    gradient strong enough on its own to hold a caption over a
-                    lit panel would have blacked out the machine. */}
-                <div className="absolute inset-0 bg-gradient-to-t from-graphite/94 via-graphite/62 to-graphite/12" />
+                >
+                  <Photo
+                    src={device.photo}
+                    seed={device.photoSeed}
+                    tone="dark"
+                    spec={isLead ? "1200 x 900" : "800 x 600"}
+                    label={`${device.name}: аппарат в кабинете, деталь панели крупным планом`}
+                    sizes={isLead ? "(max-width: 1024px) 100vw, 58vw" : "(max-width: 1024px) 100vw, 33vw"}
+                    className="object-contain object-center transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                  />
+                </div>
 
                 <div className="relative flex h-full flex-col justify-end p-6">
                   <h3
-                    className={`u-on-photo-strong font-display leading-tight text-warm-white ${
+                    className={`font-display leading-tight text-warm-white ${
                       isLead ? "text-[34px] lg:text-[44px]" : "text-[24px]"
                     }`}
                   >
                     {device.name}
                   </h3>
-                  <p className="u-on-photo-strong mt-2 text-[14px] text-warm-white/80">
+                  <p className="mt-2 text-[14px] text-warm-white/80">
                     {device.maker}, {device.country}
                   </p>
-                  <p className="u-on-photo-strong mt-4 max-w-[42ch] text-[14px] leading-relaxed text-warm-white">
+                  <p className="mt-4 max-w-[42ch] text-[14px] leading-relaxed text-warm-white">
                     {device.purpose}
                   </p>
-                  <p className="u-on-photo-strong mt-2 max-w-[42ch] text-[13px] leading-relaxed text-warm-white/75">
+                  <p className="mt-2 max-w-[42ch] text-[13px] leading-relaxed text-warm-white/75">
                     {device.advantage}
                   </p>
                 </div>
