@@ -26,15 +26,20 @@ export default function About() {
     <section ref={ref} className="relative overflow-hidden bg-graphite">
       <motion.div style={{ y }} className="absolute inset-0 scale-110">
         <Photo
+          src="/photo/section-lobby.jpg"
           seed="interior"
           tone="dark"
-          spec="1920 x 1200"
-          label="Интерьер клиники: зона ожидания или процедурный кабинет, естественный свет"
+          spec="736 x 736"
+          label="Ресепшн клиники: зелёный мрамор, латунь, мягкий свет"
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-center"
         />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/80 to-graphite/40" />
+      {/* The interior is bright and busy, so the scrim is two layers: a flat
+          floor across the frame and a left weighted gradient under the column,
+          which is where every line of type sits. */}
+      <div className="absolute inset-0 bg-graphite/25" />
+      <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/78 to-graphite/35" />
       <div className="u-grain absolute inset-0" />
 
       <div className="relative mx-auto max-w-[1280px] px-5 py-28 lg:px-10 lg:py-40">
@@ -47,7 +52,7 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <p className="mt-8 max-w-[54ch] text-[17px] leading-relaxed text-warm-white/65">
+            <p className="mt-8 max-w-[54ch] text-[17px] leading-relaxed text-warm-white">
               Мы не устраняем эстетический недостаток изолированно. Врач разбирается, почему кожа
               повела себя так, и уже из этого собирает план: иногда это курс процедур, иногда
               обследование у смежного специалиста, а иногда изменение домашнего ухода.
@@ -55,7 +60,7 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <p className="mt-6 max-w-[54ch] text-[17px] leading-relaxed text-warm-white/65">
+            <p className="mt-6 max-w-[54ch] text-[17px] leading-relaxed text-warm-white">
               Такой подход занимает больше времени на входе и почти всегда экономит его дальше.
               Пациент понимает, за что платит, и видит, из чего складывается результат.
             </p>
@@ -66,7 +71,7 @@ export default function About() {
               <Cta variant="onDark" onClick={() => open()}>
                 Записаться на консультацию
               </Cta>
-              <p className="text-[14px] text-warm-white/50">
+              <p className="text-[14px] text-warm-white/80">
                 Первая консультация занимает около 40 минут
               </p>
             </div>
