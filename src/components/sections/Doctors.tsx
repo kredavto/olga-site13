@@ -120,7 +120,7 @@ export default function Doctors() {
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   className="relative w-full max-w-[520px] rounded-card bg-warm-white p-8"
                 >
-                  <h3 className="font-display text-[28px] leading-tight">{doctor.name}</h3>
+                  <h3 className="font-display text-[28px] leading-tight text-bronze-bright">{doctor.name}</h3>
                   <p className="mt-1.5 text-[15px] text-warm-gray">{doctor.role}</p>
 
                   <div className="u-rule-champagne mt-6 h-px w-full" />

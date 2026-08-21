@@ -148,7 +148,7 @@ export default function Prices() {
                   <Reveal as="li" key={service.slug} delay={Math.min(index * 0.04, 0.24)}>
                     <div className="grid gap-4 py-7 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start sm:gap-10">
                       <div>
-                        <h3 className="font-display text-[24px] leading-tight">{service.title}</h3>
+                        <h3 className="font-display text-[24px] leading-tight text-bronze-bright">{service.title}</h3>
                         <p className="mt-2.5 max-w-[56ch] text-[15px] leading-relaxed text-warm-gray">
                           {service.summary}
                         </p>
@@ -193,7 +193,7 @@ export default function Prices() {
               {countdown && (
                 <div className="rounded-card bg-ink p-7 text-warm-white">
                   <p className="u-meta text-warm-white/50">Действует до конца месяца</p>
-                  <h3 className="mt-4 font-display text-[26px] leading-tight">{promo.title}</h3>
+                  <h3 className="mt-4 font-display text-[26px] leading-tight text-gold">{promo.title}</h3>
                   <div className="mt-5 flex items-baseline gap-3">
                     <span className="font-display text-[30px] tabular-nums">
                       {formatPrice(promo.nowPrice)} ₽
@@ -227,7 +227,7 @@ export default function Prices() {
               )}
 
               <div className="rounded-card border border-taupe/70 p-7">
-                <h3 className="font-display text-[22px] leading-tight">Что входит в стоимость</h3>
+                <h3 className="font-display text-[24px] leading-tight text-bronze-bright">Что входит в стоимость</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-warm-gray">
                   Цена включает работу врача, препарат или расходный материал и постпроцедурный
                   уход. Контрольный осмотр после процедуры бесплатный.

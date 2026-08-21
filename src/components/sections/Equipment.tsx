@@ -69,7 +69,7 @@ export default function Equipment() {
 
                 <div className="relative flex h-full flex-col justify-end p-6">
                   <h3
-                    className={`font-display leading-tight text-warm-white ${
+                    className={`font-display leading-tight text-gold ${
                       isLead ? "text-[34px] lg:text-[44px]" : "text-[24px]"
                     }`}
                   >

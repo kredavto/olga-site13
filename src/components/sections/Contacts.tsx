@@ -50,7 +50,7 @@ export default function Contacts() {
           <div className="grid min-w-0 gap-6 [&>*]:min-w-0">
             <Reveal delay={0.08}>
               <div className="rounded-card border border-taupe/70 p-7">
-                <h3 className="font-display text-[24px] leading-tight">Адрес</h3>
+                <h3 className="font-display text-[24px] leading-tight text-bronze-bright">Адрес</h3>
                 <address className="mt-4 not-italic leading-relaxed text-warm-gray">
                   {contacts.address}
                 </address>
@@ -90,7 +90,7 @@ export default function Contacts() {
 
             <Reveal delay={0.14}>
               <div className="rounded-card bg-pearl p-7">
-                <h3 className="font-display text-[24px] leading-tight">Записаться</h3>
+                <h3 className="font-display text-[24px] leading-tight text-bronze-bright">Записаться</h3>
                 <p className="mt-2.5 text-[15px] leading-relaxed text-warm-gray">
                   Оставьте номер, администратор перезвонит и подберёт врача и время.
                 </p>

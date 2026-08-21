@@ -121,7 +121,7 @@ export default async function ServicePage({ params }: Params) {
             <div className="grid gap-14 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-20">
               <div>
                 <Reveal>
-                  <h2 className="text-[clamp(1.8rem,3.2vw,2.6rem)] leading-tight text-bronze">
+                  <h2 className="text-[clamp(1.8rem,3.2vw,2.6rem)] leading-tight text-bronze-bright">
                     Что входит в процедуру
                   </h2>
                 </Reveal>
@@ -181,7 +181,7 @@ export default async function ServicePage({ params }: Params) {
         <section className="bg-pearl py-20 lg:py-28">
           <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
             <Reveal>
-              <h2 className="text-[clamp(1.8rem,3.2vw,2.6rem)] leading-tight text-bronze">
+              <h2 className="text-[clamp(1.8rem,3.2vw,2.6rem)] leading-tight text-bronze-bright">
                 Кто проводит процедуру
               </h2>
             </Reveal>
@@ -219,7 +219,7 @@ export default async function ServicePage({ params }: Params) {
           <section className="bg-warm-white py-20 lg:py-28">
             <div className="mx-auto max-w-[1280px] px-5 lg:px-10">
               <Reveal>
-                <h2 className="text-[clamp(1.8rem,3.2vw,2.6rem)] leading-tight text-bronze">
+                <h2 className="text-[clamp(1.8rem,3.2vw,2.6rem)] leading-tight text-bronze-bright">
                   Другие процедуры направления
                 </h2>
               </Reveal>

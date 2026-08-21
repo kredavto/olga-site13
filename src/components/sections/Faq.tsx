@@ -36,7 +36,7 @@ export default function Faq() {
                         aria-expanded={isOpen}
                         className="flex w-full items-start justify-between gap-6 py-6 text-left"
                       >
-                        <span className="font-display text-[21px] leading-snug lg:text-[24px]">
+                        <span className="font-display text-[21px] leading-snug text-bronze-bright lg:text-[24px]">
                           {item.q}
                         </span>
                         <motion.span

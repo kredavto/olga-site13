@@ -42,7 +42,7 @@ export default function SectionHead({
     titleTone === "metal"
       ? tone === "light"
         ? "text-gold"
-        : "text-bronze"
+        : "text-bronze-bright"
       : tone === "light"
         ? "text-warm-white"
         : "text-charcoal";

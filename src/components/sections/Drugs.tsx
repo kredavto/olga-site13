@@ -63,7 +63,7 @@ export default function Drugs() {
           <Reveal delay={0.1}>
             <div className="sticky top-28 rounded-card bg-sage-wash p-8 lg:p-10">
               <ShieldCheck size={30} weight="thin" className="text-sage-deep" />
-              <h3 className="mt-6 font-display text-[28px] leading-tight">
+              <h3 className="mt-6 font-display text-[28px] leading-tight text-bronze-bright">
                 Как мы обращаемся с препаратом
               </h3>
               <ul className="mt-7 space-y-5">
